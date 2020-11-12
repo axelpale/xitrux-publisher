@@ -22,7 +22,7 @@
         $sql .= "AND korg_code=AES_ENCRYPT('".$password."','315420v4')";
         $row = korg_get_row($sql, $con);
 
-        if (count($row) > 0) {
+        if ($row !== false) {
           $_SESSION['userid'] = $row['user_id'];
           $_SESSION['user'] = $row['korg_name'];
           $_SESSION['logged'] = "logged";

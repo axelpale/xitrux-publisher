@@ -17,12 +17,13 @@ function korg_connect() {
 }
 
 function korg_get_row($sql, $con) {
-  $item = $con->query($sql)->fetch();
+  // Returns false if row does not exist
+  $item = $con->query($sql)->fetch(PDO::FETCH_ASSOC);
   return $item;
 }
 
 function korg_get_rows($sql, $con) {
-  $items = $con->query($sql)->fetchAll();
+  $items = $con->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   return $items;
 }
 

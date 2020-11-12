@@ -137,7 +137,7 @@ if ($LOGGED) {
   $sql = "SELECT fold_name, pids, fold_hidden, fold_system FROM korg_folds WHERE fold_id=".$fid;
   $folder_info = korg_get_row($sql, $con);
 
-  if (count($folder_info) == 0) {
+  if ($folder_info === false) {
     echo "<h1>Kansion nimeä ei löytynyt</h1>\n";
   } else {
 

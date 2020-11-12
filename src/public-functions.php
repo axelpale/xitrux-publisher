@@ -36,7 +36,7 @@ function hiddentoolsEnd() {
 function getFolderName($fold_id, $con) {
   $sql = "SELECT fold_name FROM korg_folds WHERE fold_id=".$fold_id;
   $item = korg_get_row($sql, $con);
-  if (count($item) == 0) return "&#60;unknown&#62;";
+  if ($item === false) return "&#60;unknown&#62;";
   return $item['fold_name'];
 }
 
@@ -44,7 +44,7 @@ function getFolderName($fold_id, $con) {
 function getFolderPids($fold_id, $con) {
   $sql = "SELECT pids FROM korg_folds WHERE fold_id=".$fold_id;
   $item = korg_get_row($sql, $con);
-  if (count($item) == 0) return "&#60;unknown&#62;";
+  if ($item === false) return "&#60;unknown&#62;";
   return $item['pids'];
 }
 
@@ -86,7 +86,7 @@ function getPictureData($pic_id, $con) {
 function getImageSrc($pic_id, $con) {
   $sql = "SELECT pic_src FROM korg_pics WHERE pic_id=".$pic_id;
   $item = korg_get_row($sql, $con);
-  if (count($item) == 0) return "&#60;unknown&#62;";
+  if ($item === false) return "&#60;unknown&#62;";
   return $item['pic_src'];
 }
 
@@ -94,7 +94,7 @@ function getImageSrc($pic_id, $con) {
 function getImageThumb($pic_id, $con) {
   $sql = "SELECT pic_src, pic_thumb FROM korg_pics WHERE pic_id=".$pic_id;
   $item = korg_get_row($sql, $con);
-  if (count($item) == 0) return "&#60;unknown&#62;";
+  if ($item === false) return "&#60;unknown&#62;";
   return validateSrc($item['pic_thumb'], $item['pic_src']);
 }
 
@@ -115,13 +115,6 @@ function getRandomImageSrc($fold_id, $con) {
 
   return "";
 }
-
-// Tarkistetaan löytyykö tiedosto, jos ei löydy näytetään missing.png
-/*function validateSrc($file_src) {
-  if ( is_file($file_src) ) {
-    return $file_src;
-  } else return PIC_NOT_FOUND;
-}*/
 
 // Tarkistetaan löytyykö ensimmäinen tiedosto, jos ei löydy näytetään toinen.
 // Jollei toinenkaan löydy näytetään missing.png.
@@ -247,10 +240,10 @@ function getCleanDateTime($datetime) {
 // Palauttaa sivuston viimeisimmän päivitysajan
 function getSiteUpdate($site_id, $con) {
   $sql = "SELECT site_update FROM korg_site WHERE site_id=".$site_id;
-  $result = korg_get_row($sql, $con);
+  $item = korg_get_row($sql, $con);
   $updatetime = "";
-  if (count($result) != 0) {
-    $updatetime = $result['site_update'];
+  if ($item !== false) {
+    $updatetime = $item['site_update'];
   }
   return $updatetime;
 }
@@ -259,10 +252,10 @@ function getSiteUpdate($site_id, $con) {
 // Arvo pohjautuu phpn sessionseihin
 function getSiteVisitors($site_id, $con) {
   $sql = "SELECT site_visitors FROM korg_site WHERE site_id=".$site_id;
-  $result = korg_get_row($sql, $con);
+  $item = korg_get_row($sql, $con);
   $visitors = 1;
-  if (count($result) != 0) {
-    $visitors = $result['site_visitors'];
+  if ($item !== false) {
+    $visitors = $item['site_visitors'];
   }
   return $visitors;
 }
@@ -270,10 +263,10 @@ function getSiteVisitors($site_id, $con) {
 // Function getSitePageload: returns amount of loaded pages of given site
 function getSitePageload($site_id, $con) {
   $sql = "SELECT site_pageload FROM korg_site WHERE site_id=".$site_id;
-  $result = korg_get_row($sql, $con);
+  $item = korg_get_row($sql, $con);
   $pageload = 1;
-  if (count($result) != 0) {
-    $pageload = $result['site_pageload'];
+  if ($item !== false) {
+    $pageload = $item['site_pageload'];
   }
   return $pageload;
 }
@@ -281,10 +274,10 @@ function getSitePageload($site_id, $con) {
 // Function getSiteMainload: returns amount of loaded mainpages of given site
 function getSiteMainload($site_id, $con) {
   $sql = "SELECT site_mainload FROM korg_site WHERE site_id=".$site_id;
-  $result = korg_get_row($sql, $con);
+  $item = korg_get_row($sql, $con);
   $mainload = 1;
-  if (count($result) != 0) {
-    $mainload = $result['site_mainload'];
+  if ($item !== false) {
+    $mainload = $item['site_mainload'];
   }
   return $mainload;
 }

@@ -46,7 +46,7 @@
       $sql = "SELECT pic_name,pic_caption,pic_src,pic_orig FROM korg_pics WHERE pic_id=".$picorder[$i]." AND pic_hidden=0";
       $item = korg_get_row($sql, $con);
 
-      if (count($item) > 0) {
+      if ($item !== false) {
         // Vaihdetaan rivinvaihdot toimivaan muotoon
         $captiontext = str_replace("\r\n","<br/>",str_replace("\"","&quot;",$item['pic_caption']));
 

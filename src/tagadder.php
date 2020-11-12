@@ -18,7 +18,7 @@
   $sql = "SELECT tag FROM korg_tags WHERE tag=";
   $sql .= '"'.$taga.'"';
   $row = korg_get_row($sql, $con);
-  if (count($row) == 0) { // jos tagia ei löydy niin lisätään sellainen
+  if ($row === false) { // jos tagia ei löydy niin lisätään sellainen
     $sql = "INSERT INTO korg_tags(tag) VALUES('".$taga."')";
     $rowsInserted = korg_insert($sql, $con);
     if ($rowsInserted == 0) {
@@ -30,7 +30,7 @@
   $sql = "SELECT tag FROM korg_tags_folds WHERE tag=";
   $sql .= '"'.$taga.'" AND fold_id='.$fida;
   $row = korg_get_row($sql, $con);
-  if (count($row) == 0) {
+  if ($row === false) {
     // Jos tagia ei ole liitetty kansioon niin lisätään liitos.
     // Lisätään kansioon fid luokka tag
     $sql = "INSERT INTO korg_tags_folds(tag,fold_id) VALUES('".$taga."',".$fida.")";

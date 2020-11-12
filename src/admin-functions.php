@@ -389,7 +389,7 @@ function getPidsArray($fold_id, $con) {
   $pids_raw = array();
   $pids_final = array();
 
-  if (count($row) != 0) {
+  if ($row !== false) {
     $pids_raw = explode(" ", trim($row['pids']));
 
     // Jos pids on tyhjä merkkijono niin jonoon tulee yksi alkio "".
