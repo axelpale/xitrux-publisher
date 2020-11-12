@@ -188,7 +188,7 @@ if ($LOGGED) {
     // Etsitään kuinka mones annettu kansio on.
     for ($i = 0; $i < $rowcount; $i++) {
       $row = $rows[$i];
-      if ($row[0] == $fid) {
+      if ($row['fold_id'] == $fid) {
         $first = $i - ($i % $amount);
         break;
       }
