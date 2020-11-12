@@ -1,6 +1,6 @@
 <?php
 
-include_once("config.php");
+include_once("db.php");
 
 ##########################################################
 # Sivuston julkisissa osiossa tarvittavia php-funktioita #
@@ -16,33 +16,6 @@ define("EMPTY_FOLDER_SRC", "images/empty.gif");
 // Tulosteetaan erotin
 function printSeparator() {
   echo "<div class='erottaja'>&nbsp;</div>\n";
-}
-
-// Yhdistetään MySQL-tietokantaan
-function korg_connect() {
-  // MySQL-yhteys
-  try {
-    $dbh = new PDO('mysql:host=localhost;dbname='.DBNAME, DB_USER, DB_PASS);
-  } catch (PDOException $e) {
-    print "Could not connect: " . $e->getMessage() . "<br/>";
-    die();
-  }
-
-  return $dbh;
-}
-
-function korg_get_row($sql, $con) {
-  $item = $con->query($sql)->fetch();
-  return $item;
-}
-
-function korg_get_rows($sql, $con) {
-  $items = $con->query($sql)->fetchAll();
-  return $items;
-}
-
-function korg_update($sql, $con) {
-  return $con->query($sql);
 }
 
 // Hiddentoolsien alkutagit
