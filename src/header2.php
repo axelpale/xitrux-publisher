@@ -2,28 +2,6 @@
 <body>
 
 <div class="supcontainer">
-
-  <?php
-    // Varoitus vanhasta selaimesta
-    if ( ENABLE_IEXPLORER_WARNING ) {
-  ?>
-
-  <div class="errorheader">
-    <script type="text/javascript">
-      //<!-- vanhemmille selaimille .P
-      if (navigator.appName=="Microsoft Internet Explorer") {
-        if (parseFloat(navigator.appVersion) < 7) {
-          document.write("<?php echo BROWSER_WARNING_TEXT; ?>");
-        }
-      }
-      //-->
-    </script>
-  </div>
-
-  <?php
-    } // Varoitus vanhasta selaimesta päättyy
-  ?>
-
   <div class="container">
     <div class="mainheader">
       <div class="banner">

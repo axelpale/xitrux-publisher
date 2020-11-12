@@ -49,11 +49,6 @@ define("TEXT_USER_NAME_TITLE", "Käyttäjä:" );
 define("TEXT_USER_LOGOUT", "kirjaudu ulos" );
 define("TEXT_USER_LOGIN", "kirjaudu" );
 
-
-// Warning about old browser
-define("ENABLE_BROWSER_WARNING", TRUE );
-define("BROWSER_WARNING_TEXT", "<div>Tämä on nykyaikainen sivusto eikä näin ollen tue vanhoja ja rajottuneita Internet Explorer -selaimia.<br/>Hanki kunnon selain esimerkiksi <a class='under' href='http://www.mozilla.com/en-US/'>täältä</a>.</div>" );
-
 // Banner images
 define("ENABLE_BANNER_RIGHT", TRUE );
 define("BANNER_RIGHT_DEFAULT_PATH", "images/upload/fid32/banner19.jpg");
