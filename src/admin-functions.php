@@ -1,4 +1,7 @@
 <?php
+
+include_once("db.php");
+
 #######################################################
 # Sivuston hallintaosiossa tarvittavia php-funktioita #
 #######################################################
@@ -34,8 +37,8 @@ define("UPLOAD_DIRECTORY", "images/upload/");
 
 // Päivitetään kansion pids-tieto, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePids($fold_id, $pids, $con) {
-	$sql = "UPDATE korg_folds SET pids=\"".$pids."\" WHERE fold_id=".$fold_id; 
-	if(!mysql_query($sql, $con)) return false;
+	$sql = "UPDATE korg_folds SET pids=\"".$pids."\" WHERE fold_id=".$fold_id;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -46,7 +49,7 @@ function updatePids($fold_id, $pids, $con) {
 // Päivitetään kansion pids-tieto, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePidsArray($fold_id, $pids_array, $con) {
 	$pids_string = pidsArrayToString($pids_array);
-	if(!updatePids($fold_id, $pids_string, $con)) return false;
+	if (!updatePids($fold_id, $pids_string, $con)) return false;
 	return true;
 }
 
@@ -57,7 +60,7 @@ function updatePidsArray($fold_id, $pids_array, $con) {
 // Päivitetään kansion nimi, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updateFolderName($fold_id, $newname, $con) {
 	$sql = "UPDATE korg_folds SET fold_name=\"".$newname."\" WHERE fold_id=".$fold_id;
-	if(!mysql_query($sql, $con)) return false;
+	if(korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -68,7 +71,7 @@ function updateFolderName($fold_id, $newname, $con) {
 // Päivitetään kuvan nimi, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureName($pic_id, $newname, $con) {
 	$sql = "UPDATE korg_pics SET pic_name=\"".$newname."\" WHERE pic_id=".$pic_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -79,7 +82,7 @@ function updatePictureName($pic_id, $newname, $con) {
 // Päivitetään kuvan tiedostohakemisto. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureSrc($pic_id, $newsrc, $con) {
 	$sql = "UPDATE korg_pics SET pic_src=\"".$newsrc."\" WHERE pic_id=".$pic_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -92,7 +95,7 @@ function updatePictureSrc($pic_id, $newsrc, $con) {
 
 function updatePicturePaths($pic_id, $newsrc, $newthumb, $neworig, $con) {
 	$sql = "UPDATE korg_pics SET pic_src=\"".$newsrc."\", pic_thumb=\"".$newthumb."\", pic_orig=\"".$neworig."\"  WHERE pic_id=".$pic_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -103,7 +106,7 @@ function updatePicturePaths($pic_id, $newsrc, $newthumb, $neworig, $con) {
 // Päivitetään kuvan lisämateriaalihakemisto. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureLink($pic_id, $newlink, $con) {
 	$sql = "UPDATE korg_pics SET pic_link=\"".$newlink."\" WHERE pic_id=".$pic_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -114,7 +117,7 @@ function updatePictureLink($pic_id, $newlink, $con) {
 
 function updatePictureThumb($pic_id, $newthumb, $con) {
 	$sql = "UPDATE korg_pics SET pic_thumb=\"".$newthumb."\" WHERE pic_id=".$pic_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -125,7 +128,7 @@ function updatePictureThumb($pic_id, $newthumb, $con) {
 // Päivitetään kuvateksti, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureCaption($pic_id, $newcaption, $con) {
 	$sql = "UPDATE korg_pics SET pic_caption=\"".$newcaption."\" WHERE pic_id=".$pic_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -136,7 +139,7 @@ function updatePictureCaption($pic_id, $newcaption, $con) {
 
 function updatePictureFolder($pic_id, $newfolder, $con) {
 	$sql = "UPDATE korg_pics SET fold_id=".$newfolder." WHERE pic_id=".$pic_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -148,7 +151,7 @@ function updatePictureFolder($pic_id, $newfolder, $con) {
 // Päivitetään muistiinpanon note_body. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updateNoteBody($note_id, $newbody, $con) {
 	$sql = "UPDATE korg_notes SET note_body=\"".$newbody."\",note_edited='".date("Y-m-d H:i:s")."' WHERE note_id=".$note_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -159,10 +162,10 @@ function updateNoteBody($note_id, $newbody, $con) {
 // Päivitetään muistiinpanon note_marked. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updateNoteMarked($note_id, $marked, $con) {
 	$sql = "UPDATE korg_notes SET note_marked=";
-	if($marked == '1') $sql .= "1";
+	if ($marked == '1') $sql .= "1";
 	else $sql .= "0";
 	$sql .= " WHERE note_id=".$note_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -173,7 +176,7 @@ function updateNoteMarked($note_id, $marked, $con) {
 // Poistetaan muistiinpano. Jos poisto epäonnistui funktio palauttaa FALSE muuten TRUE
 function deleteNote($note_id, $con) {
 	$sql = "DELETE FROM korg_notes WHERE note_id=".$note_id;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_delete($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -251,7 +254,7 @@ function uploadImage($files, $fold_id) {
 
 	// Lopullinen tiedostonimi hakemistoineen. Tämä arvo palautetaan
 	$newfilename = "";
-	
+
 	// Minne kuvat kopioidaan
 	$hakemisto = UPLOAD_DIRECTORY."fid".$fold_id."/";
 
@@ -362,12 +365,13 @@ function getUploadDir($fold_id) {
 #####################################################################
 
 // Haetaan tietokannassa olevien kuvien idt ja palautetaan ne jonona
-function getPictureIds($fold_id,$con) {
+function getPictureIds($fold_id, $con) {
 	$sql = "SELECT pic_id FROM korg_pics WHERE fold_id=".$fold_id;
-	$result = mysql_query($sql, $con);
+	$rows = korg_get_rows($sql, $con);
 	$pictureids = array();
-	while($id_number = mysql_fetch_array($result)) {
-		array_push($pictureids,$id_number['pic_id']);
+
+	foreach ($rows as $row) {
+		array_push($pictureids, $row['pic_id']);
 	}
 
 	return $pictureids;
@@ -379,20 +383,20 @@ function getPictureIds($fold_id,$con) {
 #######################################################################
 
 // Haetaan kansion tiedoissa olevat kuvaidt ja tallennetaan ne toiseen jonoon
-function getPidsArray($fold_id,$con) {
+function getPidsArray($fold_id, $con) {
 	$sql = "SELECT pids FROM korg_folds WHERE fold_id=".$fold_id;
-	$result = mysql_query($sql, $con);
+	$row = korg_get_row($sql, $con);
 	$pids_raw = array();
 	$pids_final = array();
-	if(mysql_num_rows($result) != 0) {
-		$folder_array = mysql_fetch_array($result);
-		$pids_raw = explode(" ",trim($folder_array['pids']));
+
+	if (count($row) != 0) {
+		$pids_raw = explode(" ", trim($row['pids']));
 
 		// Jos pids on tyhjä merkkijono niin jonoon tulee yksi alkio "".
 		// Poistetaan kaikki tyhjät alkiot ja sijoitetaan tulos muuttujaan $pids_fold_final
-		foreach($pids_raw as $element) {
-			if($element != "" && $element != " ")
-				array_push($pids_final,$element);
+		foreach ($pids_raw as $element) {
+			if ($element != "" && $element != " ")
+				array_push($pids_final, $element);
 		}
 	}
 
@@ -404,11 +408,10 @@ function getPidsArray($fold_id,$con) {
 ######################################################################
 
 function pidsArrayToString($pids_array) {
-
 	$pids_string = "";
 
-	foreach($pids_array as $element) {
-		if($element != "" && $element != " ")
+	foreach ($pids_array as $element) {
+		if ($element != "" && $element != " ")
 			$pids_string .= $element." ";
 	}
 
@@ -432,7 +435,7 @@ function removeResource( $_target ) {
 		}
 		return false;
 	}
-	   
+
 	//dir?
 	if( is_dir($_target) ) {
 		if( is_writeable($_target) ) {
@@ -441,19 +444,19 @@ function removeResource( $_target ) {
 		            unset($_res);
 		            continue;
 		        }
-		           
+
 		        if( $_res->isFile() ) {
 		            removeResource( $_res->getPathName() );
 		        } elseif( $_res->isDir() ) {
 		            removeResource( $_res->getRealPath() );
-		        }				       
+		        }
 		        unset($_res);
 		    }
-       
+
 		    if( @rmdir($_target) ) {
 		        return true;
 		    }
-		}	   
+		}
 		return false;
 	}
 
@@ -472,15 +475,15 @@ function removeFromFolder($fold_id, $pic_id, $con) {
 	$pids_array_new = array();
 
 	// Poistetaan jonosta se alkio joka == $pic_id
-	foreach($pids_array as $element) {
-		if($element != $pic_id) array_push($pids_array_new, $element);
+	foreach ($pids_array as $element) {
+		if ($element != $pic_id) array_push($pids_array_new, $element);
 	}
 
 	// Kootaan jonosta taas string
 	$pids_string = pidsArrayToString($pids_array_new);
 
 	// Talletetaan saatu string kansion pids-kentän päälle
-	if(updatePids($fold_id, $pids_string, $con)) return true;
+	if (updatePids($fold_id, $pids_string, $con)) return true;
 
 	return false;
 }
@@ -489,26 +492,27 @@ function removeFromFolder($fold_id, $pic_id, $con) {
 # Lisää kansioon yhden pic_id-numeron #
 #######################################
 
-function addToFolder($fold_id, $pic_id, $connection) {
+function addToFolder($fold_id, $pic_id, $con) {
 
 	// Poistetaan uudesta kansiosta mahdollinen samalla
 	// pic_id-numerolla varustettu kuva
-	removeFromFolder($fold_id, $pic_id, $connection);
+	removeFromFolder($fold_id, $pic_id, $con);
 
 	// Vanhat pids-numerot
-	$oldpids = getFolderPids($fold_id,$connection);
+	$oldpids = getFolderPids($fold_id, $con);
 
 	// Uudet pids-numerot
 	$newpids = "";
 
 	// Muodostetaan uusi pids-arvo
-	if(strlen($oldpids) < 1) // jos tyhjä
+	if (strlen($oldpids) < 1) {// jos tyhjä
 		$newpids = $pic_id;
-	else
+  } else {
 		$newpids = $oldpids." ".$pic_id;
+  }
 
 	// Päivitetään pids-arvo
-	if(updatePids($fold_id, $newpids, $connection)) return true;
+	if (updatePids($fold_id, $newpids, $con)) return true;
 
 	return false;
 }
@@ -521,11 +525,11 @@ function moveImageUp($fold_id, $pic_index, $con) {
 	$pids_array = getPidsArray($fold_id, $con);
 	$array_lenght = count($pids_array);
 
-	if($pic_index != 0 && $pic_index < $array_lenght) {
+	if ($pic_index != 0 && $pic_index < $array_lenght) {
 		$buffer_array = array_splice($pids_array, $pic_index, 1);
 		array_splice($pids_array, $pic_index-1, 0, $buffer_array);
 
-		if(!updatePidsArray($fold_id, $pids_array, $con)) return false;
+		if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
 	}
 
 	return true;
@@ -539,11 +543,11 @@ function moveImageDown($fold_id, $pic_index, $con) {
 	$pids_array = getPidsArray($fold_id, $con);
 	$array_lenght = count($pids_array);
 
-	if(($pic_index + 1) > 0 && ($pic_index + 1) < $array_lenght) {
+	if (($pic_index + 1) > 0 && ($pic_index + 1) < $array_lenght) {
 		$buffer_array = array_splice($pids_array, $pic_index, 1);
 		array_splice($pids_array, $pic_index+1, 0, $buffer_array);
 
-		if(!updatePidsArray($fold_id, $pids_array, $con)) return false;
+		if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
 	}
 
 	return true;
@@ -559,12 +563,12 @@ function movePictureTop($fold_id, $pic_id, $con) {
 
 	$pic_index = array_search($pic_id,$pids_array);
 
-	if($pic_index >= 0 && $pic_index < $array_lenght) {
+	if ($pic_index >= 0 && $pic_index < $array_lenght) {
 		//$buffer_array sisältää yhden alkion eli siirrettävän numeron
 		$buffer_array = array_splice($pids_array, $pic_index, 1);
 		array_splice($pids_array, 0, 0, $buffer_array);
 
-		if(!updatePidsArray($fold_id, $pids_array, $con)) return false;
+		if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
 	}
 
 	return true;
@@ -576,7 +580,7 @@ function movePictureTop($fold_id, $pic_id, $con) {
 
 function hideImage($pic_index, $con) {
 	$sql = "UPDATE korg_pics SET pic_hidden=1 WHERE pic_id=".$pic_index;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -586,7 +590,7 @@ function hideImage($pic_index, $con) {
 
 function unhideImage($pic_index, $con) {
 	$sql = "UPDATE korg_pics SET pic_hidden=0 WHERE pic_id=".$pic_index;
-	if(!mysql_query($sql, $con)) return false;
+	if (korg_update($sql, $con) == 0) return false;
 	return true;
 }
 
@@ -595,21 +599,25 @@ function unhideImage($pic_index, $con) {
 #################################################################################
 
 function setHideFolder($fold_id, $hiding, $con) {
-	if($hiding == "0") {
+	if ($hiding == "0") {
 		// Päivitetään samalla kansion julkaisuaika ja sivuston päivitysaika
 		$sql = "UPDATE korg_folds SET fold_hidden=0,fold_issued='".date("Y-m-d H:i:s")."' WHERE fold_id=".$fold_id."; ";
-		if(!mysql_query($sql, $con)) return false;
-		
+		if (korg_update($sql, $con) == 0) return false;
+
 		$sql = "UPDATE korg_site SET site_update='".date("Y-m-d H:i:s")."' WHERE site_id=1;";
-		mysql_query($sql, $con);
+		korg_update($sql, $con);
 
 		return true;
-	} else
-	if($hiding == "1") {
-		$sql = "UPDATE korg_folds SET fold_hidden=1 WHERE fold_id=".$fold_id;
-		if(!mysql_query($sql, $con)) return false;
-		else return true;
-	}
+	} else {
+    if ($hiding == "1") {
+      $sql = "UPDATE korg_folds SET fold_hidden=1 WHERE fold_id=".$fold_id;
+      if (korg_update($sql, $con) == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 
 	return false;
 }
@@ -619,19 +627,21 @@ function setHideFolder($fold_id, $hiding, $con) {
 ############################################################################
 
 function setSystemFolder($fold_id, $makesys, $con) {
-	if($makesys == "0") {
+	if ($makesys == "0") {
 		$sql = "UPDATE korg_folds SET fold_system=0 WHERE fold_id=".$fold_id;
-		if(!mysql_query($sql, $con)) return false;
+		if (korg_update($sql, $con) == 0) return false;
 
 		return true;
-	} else
-	if($makesys == "1") {
-		$sql = "UPDATE korg_folds SET fold_system=1 WHERE fold_id=".$fold_id;
-		if(!mysql_query($sql, $con)) return false;
-		else return true;
-	}
+	} else {
+    if ($makesys == "1") {
+      $sql = "UPDATE korg_folds SET fold_system=1 WHERE fold_id=".$fold_id;
+      if (korg_update($sql, $con) == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 
 	return false;
 }
-
-?>
