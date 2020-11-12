@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   echo "<h1>Hallinnointityökalut</h1>\n";
   printSeparator();

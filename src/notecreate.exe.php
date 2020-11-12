@@ -10,9 +10,9 @@
 
   // Käyttäjän statuksen tarkastaminen
   $LOGGED = false;
-  if($_SESSION['logged'] == "logged") $LOGGED = true;
+  if ($_SESSION['logged'] == "logged") $LOGGED = true;
 
-  if($LOGGED) {
+  if ($LOGGED) {
 
     include("admin-functions.php");
 
@@ -25,11 +25,14 @@
     // Muistiinpanon lisääminen
     $sql = "INSERT INTO korg_notes(note_id,note_body,note_created,note_edited) VALUES(";
     $sql = $sql."DEFAULT,'".$_POST['newnotebody']."','".date("Y-m-d H:i:s")."','".date("Y-m-d H:i:s")."')";
-    @mysql_query($sql, $con) or die("Virhe! Uutta muistiinpanoa ei voitu luoda.");
 
-    mysql_close($con);
+    $rowsInserted = korg_insert($sql, $con)
+    if ($rowsInserted == 0) {
+      die("Virhe! Uutta muistiinpanoa ei voitu luoda.");
+    }
 
+    // Close connection
+    $con = null;
   }
 
   header( 'Location: project.php' );
-?>

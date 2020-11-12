@@ -8,9 +8,9 @@
 
   // Käyttäjän statuksen tarkastaminen
   $LOGGED = false;
-  if($_SESSION['logged'] == "logged") $LOGGED = true;
+  if ($_SESSION['logged'] == "logged") $LOGGED = true;
 
-  if($LOGGED) {
+  if ($LOGGED) {
 
     include("admin-functions.php");
 
@@ -21,10 +21,10 @@
     $nid = sanitizeId($_GET['nid']);
 
     // Muistiinpanon poistaminen
-    deleteNote($nid,$con);
+    deleteNote($nid, $con);
 
-    mysql_close($con);
-
+    // Close connection
+    $con = null;
   }
 
   header( 'Location: project.php' );

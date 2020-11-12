@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -20,7 +20,7 @@ if($LOGGED) {
   printSeparator();
 
   // Tiedostoa kysyvä lomake
-  if($_SESSION['lastupload'] != "") { // Näyttää viimeisimmän lisäyksen. Tämä helpottaa pitkien settien lisäämistä
+  if ($_SESSION['lastupload'] != "") { // Näyttää viimeisimmän lisäyksen. Tämä helpottaa pitkien settien lisäämistä
     echo "<div style='margin-bottom: 5px;'>Viimeisin lataus: ".$_SESSION['lastupload']."</div>\n";
   }
   echo "<form action='picuploader.php?fid=".$fid."' method='post' enctype='multipart/form-data'>\n";

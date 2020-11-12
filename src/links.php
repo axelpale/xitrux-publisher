@@ -10,15 +10,13 @@
   // Listataan kaikki kuvat kansiosta links
   $sql = "SELECT pic_id,pic_name,pic_src,pic_caption,pic_link ";
   $sql .= "FROM korg_pics WHERE fold_id=33 AND pic_hidden=0 ORDER BY pic_id DESC";
-  $result = mysql_query($sql, $con);
+  $rows = korg_get_rows($sql, $con);
 
-  $rowcount = mysql_num_rows($result);
-  if($rowcount != 0) {
+  $rowcount = count($rows);
+  if ($rowcount != 0) {
 
     echo "<div class='itembrowser public'>\n\n";
-    for($i=0; $i<$rowcount; $i++) {
-
-      $item = mysql_fetch_array($result);
+    foreach ($rows as $item) {
       echo "<div class='browseritem public'>\n";
       echo "<a class='thumb' href='".$item['pic_link']."' target='_blank'>";
       echo "<img src='";

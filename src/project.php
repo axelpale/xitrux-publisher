@@ -25,7 +25,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   echo "<h1>Projektin muistiinpanot</h1>\n";
 
@@ -42,45 +42,43 @@ if($LOGGED) {
 
   // Listataan kaikki muistiinpanot taulusta korg_note
   $sql = "SELECT note_id,note_body,note_created,note_edited,note_marked FROM korg_notes";
-  //if($_GET['show'] == "marked") $sql .= " WHERE note_marked=1";
-  //else if($_GET['show'] != "all") $sql .= " WHERE note_marked=0";
-  // if($_GET['show'] == "unmarked") $sql .= " WHERE note_marked=0";
+  //if ($_GET['show'] == "marked") $sql .= " WHERE note_marked=1";
+  //else if ($_GET['show'] != "all") $sql .= " WHERE note_marked=0";
+  // if ($_GET['show'] == "unmarked") $sql .= " WHERE note_marked=0";
   $sql .= " ORDER BY note_marked ASC, note_edited DESC";
-  $result = mysql_query($sql, $con);
+  $rows = korg_get_rows($sql, $con);
 
   $first = 0;
   $amount = 10;
-  if(isset($_GET["first"])) $first = (int)$_GET["first"];
-  if(isset($_GET["amount"])) $amount = (int)$_GET["amount"];
+  if (isset($_GET["first"])) $first = (int)$_GET["first"];
+  if (isset($_GET["amount"])) $amount = (int)$_GET["amount"];
 
-  $rowcount = mysql_num_rows($result);
-  if($rowcount > 0 && $amount > 0) {
+  $rowcount = count($rows);
+  if ($rowcount > 0 && $amount > 0) {
 
     // Muistiinpanonavigaatio. Esim [1-10]
     echo "<div class='linkrow top none'>\n";
-    for($i=0; $i < $rowcount; $i = $i + $amount) {
-      if($i == $first) {
+    for ($i = 0; $i < $rowcount; $i = $i + $amount) {
+      if ($i == $first) {
         echo "<b>[".($i+1)."-";
-        if($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
+        if ($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
         else echo $i+$amount;
         echo "]</b>\n";
       } else {
         echo "[<a href='project.php?first=".$i."'>".($i+1)."-";
-        if($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
+        if ($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
         else echo $i+$amount;
         echo "</a>]\n";
       }
     }
     echo "</div>\n";
 
-    if(!@mysql_data_seek($result, $first)) echo "Muistiinpanojen näyttäminen ei onnistunut.<br/>\n";
-
     echo "<div class='itembrowser public'>\n\n";
-    for($i=0; $i < ($rowcount - $first) && $i < $amount; $i++) {
+    for ($i = 0; $i < ($rowcount - $first) && $i < $amount; $i++) {
 
-      $item = mysql_fetch_array($result);
+      $item = $rows[$first + $i];
       echo "<div class='browseritem public";
-      if($item['note_marked'] == 1) echo " marked"; // Merkatut muistiinpanot
+      if ($item['note_marked'] == 1) echo " marked"; // Merkatut muistiinpanot
       echo "'>\n";
 
       echo "<h2><a name='".$item['note_id']."'></a>";
@@ -96,7 +94,7 @@ if($LOGGED) {
 
       echo "<div class='linkrow top none'>\n";
       echo "[<a href='noteedit.php?nid=".$item['note_id']."'>Muokkaa</a>]\n";
-      if($item['note_marked'] == 1)
+      if ($item['note_marked'] == 1)
         echo "[<a href='notemarker.exe.php?nid=".$item['note_id']."&marked=0'>Poista merkintä</a>]\n";
       else
         echo "[<a href='notemarker.exe.php?nid=".$item['note_id']."&marked=1'>Merkkaa</a>]\n";
@@ -112,15 +110,15 @@ if($LOGGED) {
 
     // Muistiinpanonavigaatio. Esim [1-10]
     echo "<div class='linkrow top'>\n";
-    for($i=0; $i < $rowcount; $i = $i + $amount) {
-      if($i == $first) {
+    for ($i = 0; $i < $rowcount; $i = $i + $amount) {
+      if ($i == $first) {
         echo "<b>[".($i+1)."-";
-        if($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
+        if ($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
         else echo $i+$amount;
         echo "]</b>\n";
       } else {
         echo "[<a href='project.php?first=".$i."'>".($i+1)."-";
-        if($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
+        if ($i+$amount > $rowcount) echo $rowcount; // Jotta viimeinen järjestysluku olisi oikein
         else echo $i+$amount;
         echo "</a>]\n";
       }

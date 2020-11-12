@@ -4,7 +4,7 @@
 
 function validateRequired(field) {
   with(field) {
-    if(value == null || value == "") {
+    if (value == null || value == "") {
       return false;
     } else {
       return true;
@@ -14,11 +14,11 @@ function validateRequired(field) {
 
 function validateForm(thisform) {
   with(thisform) {
-    if(!validateRequired(username)) {
+    if (!validateRequired(username)) {
       username.focus();
       return false;
     } else
-    if(!validateRequired(password)) {
+    if (!validateRequired(password)) {
       password.focus();
       return false;
     }
@@ -33,8 +33,8 @@ function validateForm(thisform) {
 
 <?php
 
-if($LOGGED) echo "KIRJAUTUNUT\n";
-if($_SESSION['fails'] < 5) {
+if ($LOGGED) echo "KIRJAUTUNUT\n";
+if ($_SESSION['fails'] < 5) {
   echo "<h1>Kirjaudu sisään:</h1>\n";
   printSeparator();
   echo "<form action='login.exe.php' onsubmit='return validateForm(this)' method='post'>\n";

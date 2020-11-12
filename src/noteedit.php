@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   // nid = note_id = muistiinpanon id-numero
   // Tarkistetaan GET['nid'] tietoturvan vuoksi

@@ -8,9 +8,9 @@
 
   // Käyttäjän statuksen tarkastaminen
   $LOGGED = false;
-  if($_SESSION['logged'] == "logged") $LOGGED = true;
+  if ($_SESSION['logged'] == "logged") $LOGGED = true;
 
-  if($LOGGED) {
+  if ($LOGGED) {
 
     include("admin-functions.php");
 
@@ -22,18 +22,17 @@
     $pid = sanitizeId($_GET['pid']);
 
     // Kuvan nimen ja kuvatekstin päivittäminen
-    if($pid >= 0) {
-      if(!updatePictureName($pid, $_POST['newpicname'], $con))
+    if ($pid >= 0) {
+      if (!updatePictureName($pid, $_POST['newpicname'], $con))
         echo "Kuvan nimen vaihtaminen epäonnistui.<br/>\n";
-      if(!updatePictureLink($pid, $_POST['newpiclink'], $con))
+      if (!updatePictureLink($pid, $_POST['newpiclink'], $con))
         echo "Lisämateriaalin vaihtaminen epäonnistui.<br/>\n";
-      if(!updatePictureCaption($pid, $_POST['newcaption'], $con))
+      if (!updatePictureCaption($pid, $_POST['newcaption'], $con))
         echo "Kuvatekstin vaihtaminen epäonnistui.<br/>\n";
     }
 
-    mysql_close($con);
-
+    // Close connection
+    $con = null;
   }
 
   header( 'Location: foldadmin.php?fid='.$fid.'&pid='.$pid );
-?>

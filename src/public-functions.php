@@ -64,6 +64,17 @@ function printFolderTags($fold_id, $con) {
   return $tags;
 }
 
+// Get array that contains all tags as strings.
+function getAvailableTags($con) {
+  $sql = "SELECT tag FROM korg_tags";
+  $rows = korg_get_rows($sql, $con);
+  $tags = array();
+  foreach ($rows as $row) {
+    array_push($tags, $row['tag']);
+  }
+  return $tags;
+}
+
 // Haetaan kuvan kaikki tiedot assosiatiiviseen jonoon
 function getPictureData($pic_id, $con) {
   $sql = "SELECT * FROM korg_pics WHERE pic_id=".$pic_id;
@@ -83,7 +94,7 @@ function getImageSrc($pic_id, $con) {
 function getImageThumb($pic_id, $con) {
   $sql = "SELECT pic_src, pic_thumb FROM korg_pics WHERE pic_id=".$pic_id;
   $item = korg_get_row($sql, $con);
-  if(count($item) == 0) return "&#60;unknown&#62;";
+  if (count($item) == 0) return "&#60;unknown&#62;";
   return validateSrc($item['pic_thumb'], $item['pic_src']);
 }
 
@@ -107,7 +118,7 @@ function getRandomImageSrc($fold_id, $con) {
 
 // Tarkistetaan löytyykö tiedosto, jos ei löydy näytetään missing.png
 /*function validateSrc($file_src) {
-  if( is_file($file_src) ) {
+  if ( is_file($file_src) ) {
     return $file_src;
   } else return PIC_NOT_FOUND;
 }*/
@@ -115,10 +126,10 @@ function getRandomImageSrc($fold_id, $con) {
 // Tarkistetaan löytyykö ensimmäinen tiedosto, jos ei löydy näytetään toinen.
 // Jollei toinenkaan löydy näytetään missing.png.
 function validateSrc($file_src, $file2_src) {
-  if( is_file($file_src) ) {
+  if ( is_file($file_src) ) {
     return $file_src;
   } else
-  if( is_file($file2_src) ) {
+  if ( is_file($file2_src) ) {
     return $file2_src;
   }
   return PIC_NOT_FOUND;
@@ -129,8 +140,8 @@ function validateSrc($file_src, $file2_src) {
 function getIndexImagePid($fold_id, $con) {
   $pids_string = getFolderPids($fold_id, $con);
   $pids_array = pidsStringToArray($pids_string);
-  if(count($pids_array) > 0) {
-    if(strlen($pids_array[0]) > 0)
+  if (count($pids_array) > 0) {
+    if (strlen($pids_array[0]) > 0)
       return $pids_array[0];
   }
   return "";
@@ -174,7 +185,7 @@ function getPicturePosition($fold_id, $pic_id, $con) {
   $pids_array = pidsStringToArray($pids_string);
   $pos = array_search($pic_id, $pids_array);
 
-  if($pos === "" || $pos === FALSE) return 0;
+  if ($pos === "" || $pos === FALSE) return 0;
   return $pos;
 }
 

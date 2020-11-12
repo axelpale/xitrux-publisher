@@ -5,7 +5,7 @@
 
   $filtering = FALSE;
 
-  if(isset($_GET['filters'])) {
+  if (isset($_GET['filters'])) {
     // Suodattimet
     // Määrävät minkä luokan kansioita näytetään
     $filters_str = $_GET['filters'];
@@ -17,15 +17,15 @@
 
   // Listataan kaikki kansiot filttereitä noudattaen.
   $sql = "";
-  if($filtering) {
+  if ($filtering) {
     $sql = "SELECT folds.fold_id,folds.fold_name,folds.fold_issued ";
     $sql .= "FROM korg_folds AS folds, ";
     $sql .= "(SELECT fold_id FROM korg_tags_folds WHERE tag IN (";
 
     // Liitetään tagit sql-lauseeseen
     $filtercount = count($filters_array);
-    for($i=0; $i < $filtercount; $i++) {
-      if($i != 0) $sql .= ",'".$filters_array[$i]."'";
+    for ($i = 0; $i < $filtercount; $i++) {
+      if ($i != 0) $sql .= ",'".$filters_array[$i]."'";
       else $sql .= "'".$filters_array[$i]."'";
     }
 
@@ -38,8 +38,8 @@
     $sql = "SELECT fold_id,fold_name,fold_issued FROM korg_folds WHERE fold_hidden=0 ORDER BY fold_issued DESC";
   }
 
-  $result = mysql_query($sql, $con);
-  $rowcount = mysql_num_rows($result);
+  $rows = korg_get_rows($sql, $con);
+  $rowcount = count($rows);
 
   echo "<h1>Kuvat</h1>\n";
   printSeparator();
@@ -47,7 +47,7 @@
   // Otsikko
   echo "<h1>Kuvat -";
   // Jos suodattimia on määritetty, tulostetaan ne otsikkoon
-  if($filtering) {
+  if ($filtering) {
     foreach($filters_array as $filter) {
       echo " ".$filter;
     }
@@ -71,22 +71,22 @@
 
 
   // Kansiot
-  if($rowcount != 0) {
+  if ($rowcount != 0) {
 
     echo "<div class='itembrowser public'>\n\n";
-    for($i=0; $i<$rowcount; $i++) {
+    for ($i = 0; $i < $rowcount; $i++) {
 
-      $item = mysql_fetch_array($result);
+      $item = $rows[$i];
       echo "<div class='browseritem public'>\n";
       echo "<a class='thumb' href='picbrowser.php?fid=".$item['fold_id']."'>";
       echo "<img src='";
 
       // Haetaan kuvan tiedot
-      $indeximage = getPictureData(getIndexImagePid($item['fold_id'],$con),$con);
+      $indeximage = getPictureData(getIndexImagePid($item['fold_id'],$con), $con);
 
       // Jos indeksikuvaa ei vielä ole, niin näytetään oletuskuva
-      $indexsrc = validateSrc($indeximage['pic_thumb'],$indeximage['pic_src']);
-      if($indexsrc != PIC_NOT_FOUND) echo $indexsrc;
+      $indexsrc = validateSrc($indeximage['pic_thumb'], $indeximage['pic_src']);
+      if ($indexsrc != PIC_NOT_FOUND) echo $indexsrc;
       else echo EMPTY_FOLDER_SRC;
       echo "' alt='".$item['fold_name']."' />\n</a>\n";
 

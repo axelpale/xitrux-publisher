@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -14,12 +14,12 @@ if($LOGGED) {
   //$folder_name = getFolderName($fid,$con);
 
   // Haetaan kuvan tiedot
-  $picdata = getPictureData($pid,$con);
+  $picdata = getPictureData($pid, $con);
 
   // Linkki takaisin kansionäkymään
   echo "<div class='linkrow top'>\n";
   echo "[<a href='picadmin.php?fid=".$fid."&pid=".$pid."'>Takaisin kuvaan ";
-  if($picdata['pic_name'] != "") echo $picdata['pic_name'];
+  if ($picdata['pic_name'] != "") echo $picdata['pic_name'];
   else echo basename($picdata['pic_src']);
   echo "</a>]\n";
   echo "</div>\n";
@@ -33,12 +33,13 @@ if($LOGGED) {
   echo "Siirrä kansioon:<br/>\n";
   echo "<select id='newfolder' name='newfolder'>\n";
 
-  //Haetaan kaikki kansiot
+  // Haetaan kaikki kansiot
   $sql = "SELECT fold_id,fold_name FROM korg_folds";
-  $result = mysql_query($sql, $con);
-  while($fold = mysql_fetch_array($result)) {
+  $folders = korg_get_rows($sql, $con);
+
+  foreach ($folders as $fold) {
     echo "<option value='".$fold['fold_id']."'";
-    if($fold['fold_id'] == $fid) echo " selected='selected' ";
+    if ($fold['fold_id'] == $fid) echo " selected='selected' ";
     echo ">".$fold['fold_name']."</option>\n";
   }
   echo "</select>\n";

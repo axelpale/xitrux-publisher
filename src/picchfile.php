@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($_SESSION['logged'] == "logged") {
+if ($_SESSION['logged'] == "logged") {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -24,7 +24,7 @@ if($_SESSION['logged'] == "logged") {
   printSeparator();
 
   // Tarkastetaan onko sivulle syötetty väärät arvot
-  if($fid >= 0 && $pid >= 0) {
+  if ($fid >= 0 && $pid >= 0) {
     // Tiedostoa kysyvä lomake.
     // HUOM pid-arvo on määritetty, joten uuden kuvan lisäämisen sijaan
     // vanha, jo tietokannassa oleva kuvatieto vain

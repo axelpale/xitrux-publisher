@@ -4,7 +4,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($_SESSION['logged'] == "logged") {
+if ($_SESSION['logged'] == "logged") {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -13,7 +13,7 @@ if($_SESSION['logged'] == "logged") {
   $pid = sanitizeId($_GET['pid']);
 
   // Tulostetaan virhe, jos kansion id-numero eli fid-arvo on väärä tai sitä ei ole tuotu
-  if($fid < 0 || $pid < 0) {
+  if ($fid < 0 || $pid < 0) {
     echo "<h1>fid- tai pic-arvo ei kelpaa tai sitä ei ole tuotu. Skriptin suoritus lopetetaan</h1>\n";
     die();
   }
@@ -34,15 +34,15 @@ if($_SESSION['logged'] == "logged") {
   printSeparator();
 
   // Tiedot poistetuista kuvista
-  if($pic_data['pic_src'] != "") echo "Vanha kuvatiedosto 1: ".$pic_data['pic_src']."<br/>";
-  if($pic_data['pic_thumb'] != "") echo "Vanha kuvatiedosto 2: ".$pic_data['pic_thumb']."<br/>";
-  if($pic_data['pic_orig'] != "") echo "Vanha kuvatiedosto 3: ".$pic_data['pic_orig']."<br/>";
+  if ($pic_data['pic_src'] != "") echo "Vanha kuvatiedosto 1: ".$pic_data['pic_src']."<br/>";
+  if ($pic_data['pic_thumb'] != "") echo "Vanha kuvatiedosto 2: ".$pic_data['pic_thumb']."<br/>";
+  if ($pic_data['pic_orig'] != "") echo "Vanha kuvatiedosto 3: ".$pic_data['pic_orig']."<br/>";
   echo "Kansio: ".$foldername."<br/><br/>\n";
 
   // Poistetaan vanhat kuvat palvelimelta
   // Jos kuvia ei ole enää olemassa, funktio ymmärtää
   // ne onnistuneesti poistetuiksi
-  if(!removePictureFiles($pid,$con)) {
+  if (!removePictureFiles($pid,$con)) {
       echo "<span class='error'>Vanhan kuvan poisto epäonnistui.</span><br/>\n";
   }
 
@@ -51,7 +51,7 @@ if($_SESSION['logged'] == "logged") {
 
   echo "Väliaikainen tiedosto: ".$newpaths['tempfile']."<br/><br/>\n";
   echo "Tallennetut:<br/>\n";
-  if($_POST['saveorig'] == "1") echo "Alkuperäinen kuva: ".$newpaths['original']."<br/>\n";
+  if ($_POST['saveorig'] == "1") echo "Alkuperäinen kuva: ".$newpaths['original']."<br/>\n";
   echo "Optimoitu kuva: ".$newpaths['optimized']."<br/>\n";
   echo "Pikkukuva: ".$newpaths['thumbnail']."<br/>\n";
 
@@ -59,7 +59,7 @@ if($_SESSION['logged'] == "logged") {
 
   // Testataan voidaanko kuvaa löytää/lukea lataamalla upattu kuva
   echo "<h2>Jos siirto on onnistunut, uuden kuvan pitäisi näkyä tässä:</h2>\n";
-  if(is_readable($newpaths['optimized'])) {
+  if (is_readable($newpaths['optimized'])) {
 
     // Näytetään kuva
     echo "<img src='".$newpaths['optimized']."'";
@@ -74,7 +74,7 @@ if($_SESSION['logged'] == "logged") {
     echo "<br/>\n";
 
     // Päivitetään kuvien hakemistot tietokantaan
-    if(!updatePicturePaths($pid, $newpaths['optimized'], $newpaths['thumbnail'], $newpaths['original'], $con))
+    if (!updatePicturePaths($pid, $newpaths['optimized'], $newpaths['thumbnail'], $newpaths['original'], $con))
       echo "<span class='error'>Kuvahakemistojen päivittäminen tietokantaan epäonnistui!</span><br/>\n";
 
   } else echo "<span class='error'>Uutta kuvaa ei voida lukea.</span><br/>\n";

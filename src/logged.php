@@ -3,25 +3,27 @@
 
 <?php
 
-if($LOGGED) {
+if ($LOGGED) {
 
   $sql = "SELECT times_logged FROM korg_users WHERE user_id=".$_SESSION['userid'];
-  $result = mysql_query($sql, $con);
-  $row = mysql_fetch_array($result);
+  $row = korg_get_row($sql, $con);
 
   echo "<h1>Terve ".$_SESSION['user'].", kirjautumisesi onnistui!</h1>\n";
   echo "<div class='linkrow bottom'>\n";
   echo "Tämä on ".$row['times_logged'].". kirjautumiskertasi kohteet.orgiin.\n";
   echo "</div>\n";
 } else {
-  if(isset($_SESSION['fails'])) $_SESSION['fails'] = $_SESSION['fails'] + 1;
-  else $_SESSION['fails'] = 1;
+  if (isset($_SESSION['fails'])) {
+    $_SESSION['fails'] = $_SESSION['fails'] + 1;
+  } else {
+    $_SESSION['fails'] = 1;
+  }
 
   // Nukutaan aika joka riippuu exponentiaalisesti epäonnistuneiden kirjautumiskertojen lukumäärästä
   // Tämä siis ainoastaan virheellisen kirjautumisen yhteydessä
-  sleep(8*$_SESSION['fails']);
+  sleep(8 * $_SESSION['fails']);
 
-  if($_SESSION['fails'] < 5) {
+  if ($_SESSION['fails'] < 5) {
     echo "<h1>Kirjautuminen epäonnistunut</h1>\n";
     echo "<div class='linkrow bottom'>\n";
     echo "Käyttäjätunnus tai salasana oli väärä. Yritä [<a href='login.php'>uudelleen</a>].\n";

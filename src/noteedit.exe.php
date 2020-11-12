@@ -23,8 +23,8 @@
     // Tietojen päivittäminen
     updateNoteBody($nid,$_POST['newnotebody'],$con);
 
-    mysql_close($con);
-
+    // Close connection
+    $con = null;
   }
 
   header( 'Location: project.php#'.$nid );

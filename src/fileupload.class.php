@@ -31,12 +31,12 @@ class FileUpload {
   public function setUploadDir($directory) {
 
     // Lisätään hakemistopolun perään "/" jollei sitä löydy
-    if(substr($directory,-1,1) != "/") {
+    if (substr($directory,-1,1) != "/") {
       $directory .= "/";
     }
 
     // Luodaan hakemisto, jollei se ole olemassa
-    if($this->createDir($directory)) {
+    if ($this->createDir($directory)) {
       $this->upload_dir = $directory;
       return true;
     }
@@ -53,7 +53,7 @@ class FileUpload {
     createImageFolder($fold_id);
 
     // Lisätään tiedosto
-    if(($this->upload_dir != "") && (is_dir($this->upload_dir))
+    if (($this->upload_dir != "") && (is_dir($this->upload_dir))
     && ($source["file"]["error"] == 0)
     && ($source["file"]["size"] < $this->MAX_UPLOAD_SIZE)) {
 
@@ -71,7 +71,7 @@ class FileUpload {
       // Muutetaan kohdetiedostonimeä jos tiedosto on jo olemassa
       $pathinfo = pathinfo($targetfile);
       $plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
-      if(file_exists($this->targetfile)) { // Jos tämän niminen tiedosto on jo olemassa
+      if (file_exists($this->targetfile)) { // Jos tämän niminen tiedosto on jo olemassa
         $exists_number = 2;
         do {
           $this->targetfile = $pathinfo['dirname']."/".$plainname."-".$exists_number.".".$pathinfo['extension'];
@@ -81,8 +81,8 @@ class FileUpload {
 
       // Siirretään väliaikainen tiedosto lopulliseen paikkaan
       // ja annetaan sille sopivat oikeudet.
-      if(@move_uploaded_file($source["file"]["tmp_name"], $this->targetfile))
-        if(@chmod($this->targetfile, 0644))
+      if (@move_uploaded_file($source["file"]["tmp_name"], $this->targetfile))
+        if (@chmod($this->targetfile, 0644))
           $this->is_success = TRUE;
 
       // Kirjoitetaan lokitiedot
@@ -99,12 +99,12 @@ class FileUpload {
   // Luodaan hakemisto
   public function createDir($directory) {
     // Testataan onko hakemisto jo olemassa
-    if(is_dir($directory)) {
+    if (is_dir($directory)) {
       return true;
     } else {
       // Jos hakemisto ei ole olemassa luodaan se.
-      if(@mkdir($directory)) {
-        if(@chmod($directory, 0777)) {
+      if (@mkdir($directory)) {
+        if (@chmod($directory, 0777)) {
           return true;
         } else {
           return false;
@@ -119,7 +119,7 @@ class FileUpload {
   // Asetetaan logitiedosto
   // Palauttaa true, jos tiedosto on olemassa
   public function setLogfile($logfile_src) {
-    if(is_file($logfile_src)) {
+    if (is_file($logfile_src)) {
       $this->logfile = $logfile_src;
       return true;
     }
@@ -128,7 +128,7 @@ class FileUpload {
 
   public function writeLog() {
 
-    if($this->logfile != "") {
+    if ($this->logfile != "") {
       // Kirjoitetaan uppaustiedot lokiin
       $aika  = date("j.m-Y, H:i:s");
       $tolog = ($aika." ||| ".$this->filename." ||| ".$this->targetfile." ||| ".$this->filesize."t ||| ".$this->filetype."\n");
@@ -144,7 +144,7 @@ class FileUpload {
   }
 
   public function getUploaded() {
-    if($this->is_success) return $this->targetfile;
+    if ($this->is_success) return $this->targetfile;
     return "";
   }
 

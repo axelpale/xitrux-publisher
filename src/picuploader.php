@@ -6,7 +6,7 @@
 ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   $PICTURE_DEFAULT_NAME = "";
 
@@ -34,7 +34,7 @@ if($LOGGED) {
 
   $prints1 .= "Väliaikainen tiedosto: ".$newpaths['tempfile']."<br/><br/>\n";
   $prints1 .= "Tallennetut:<br/>\n";
-  if($_POST['saveorig'] == "1") $prints1 .= "Alkuperäinen kuva: ".$newpaths['original']."<br/>\n";
+  if ($_POST['saveorig'] == "1") $prints1 .= "Alkuperäinen kuva: ".$newpaths['original']."<br/>\n";
   $prints1 .= "Optimoitu kuva: ".$newpaths['optimized']."<br/>\n";
   $prints1 .= "Pikkukuva: ".$newpaths['thumbnail']."<br/>\n";
 
@@ -45,7 +45,7 @@ if($LOGGED) {
 
   // Testataan voidaanko kuvaa löytää/lukea lataamalla upattu kuva
   $prints1 .= "<h2>Jos siirto on onnistunut, kuvan pitäisi näkyä tässä:</h2>\n";
-  if(is_readable($newpaths['optimized'])) {
+  if (is_readable($newpaths['optimized'])) {
 
     // Päivitetään käyttäjän tieto 'viimeisin lataus',
     // joka näkyy kun uutta kuvaa upataan
@@ -68,19 +68,22 @@ if($LOGGED) {
     // Lisätään kuva tietokantaan
     $sql = "INSERT INTO korg_pics(pic_id,pic_name,pic_src,pic_thumb,pic_orig,fold_id) VALUES(";
     $sql = $sql."DEFAULT,'".$PICTURE_DEFAULT_NAME."','".$newpaths['optimized']."','".$newpaths['thumbnail']."','".$newpaths['original']."',".$fid.")";
-    if(!mysql_query($sql, $con))
-      $prints1 .= "Virhe! Kuvaa ei voitu lisätä tietokantaan. Error: ".mysql_error()."<br/>\n";
+
+    $rowsInserted = korg_insert($sql, $con);
+    if ($rowsInserted == 0) {
+      $prints1 .= "Virhe! Kuvaa ei voitu lisätä tietokantaan.<br/>\n";
 
     // Jos kuvan tietokantaan lisääminen onnistui, lisätään kuvan pic_id-numero kansion pids-numeroihin
     // pids-numerot määrittävät kuvien järjestyksen niin kansionmuokkausympäristössä kuin julkisessa kuvaselauksessakin
-    else {
+    } else {
 
       // Uuden kuvan pic_id
-      $kuvan_id = mysql_insert_id($con); // palauttaa viimeisimmän lisätyn auto_increment-numeron
+      // Palauttaa viimeisimmän lisätyn auto_increment-numeron
+      $kuvan_id = korg_insert_id($con);
 
       // Päivitetään pids-arvo
-      if(!addToFolder($fid, $kuvan_id, $con)) {
-        $prints1 .= "Virhe! Kuvan pic_id-numeroa ei voitu lisätä kansion tietoihin. Error: ".mysql_error()."<br/>\n";
+      if (!addToFolder($fid, $kuvan_id, $con)) {
+        $prints1 .= "Virhe! Kuvan pic_id-numeroa ei voitu lisätä kansion tietoihin. <br/>\n";
       }
 
       // Tarkistus, jossa vertaillaan tähän kansioon liittyviä kuvia
@@ -98,7 +101,7 @@ if($LOGGED) {
       $diff2 = array_diff($pids_fold, $pids_pics); //Alkiot, jotka puuttuvat jonosta $pids_pics
 
       //Jos eroja löytyi niin
-      if(count($diff1) != 0) {
+      if (count($diff1) != 0) {
         // Lisätään kansiosta puuttuvat kuvaidt kansion tietoihin
         foreach($diff1 as $id_number) {
           array_push($pids_fold, $id_number);
@@ -110,24 +113,25 @@ if($LOGGED) {
           $newpids .= $id_number." ";
         }
 
-        if(!updatePids($fid, $newpids, $con)) {
+        if (!updatePids($fid, $newpids, $con)) {
           $prints1 .= "Virhe! pic_id-numeroita ei voitu päivittää kansion tietoihin. <br/>\n";
-          $prints1 .= "Error: ".mysql_error()."<br/>\n";
         }
       }
 
-      if(count($diff2) != 0) {
+      if (count($diff2) != 0) {
         // Näytetään käyttäjälle virheilmoitus
         $prints1 .= "Varoitus! Kansio sisältää kuvanumeroita, joita ei ole enää olemassa.<br/>\n";
 
         //// kysytään halutaanko kuvaid poistaa kansion tiedoista
         //// Jos halutaan niin
-          //// Poistetaan kuvaid kansion tiedoista
+        //// Poistetaan kuvaid kansion tiedoista
       }
 
     }
 
-  } else $prints1 .= "Kuvaa ei voida lukea.\n";
+  } else {
+    $prints1 .= "Kuvaa ei voida lukea.\n";
+  }
 
   // Asetetaan kuvatieto nulliksi
   // jottei sivua uppaamalla pystytä
@@ -137,7 +141,7 @@ if($LOGGED) {
   // Linkki takaisin kansionäkymään
   echo "<div class='linkrow top'>\n";
   echo "[<a href='foldadmin.php?fid=".$fid."&pid=".$kuvan_id."'>Takaisin kansioon ".$foldername."</a>] - \n";
-  if($kuvan_id > 0) echo "[<a href='picedit.php?fid=".$fid."&pid=".$kuvan_id."'>Muokkaa kuvan tietoja</a>] - \n";
+  if ($kuvan_id > 0) echo "[<a href='picedit.php?fid=".$fid."&pid=".$kuvan_id."'>Muokkaa kuvan tietoja</a>] - \n";
   echo "[<a href='picupload.php?fid=".$fid."' style=''>Lisää seuraava kuva</a>]\n";
   echo "</div>\n";
 
@@ -151,7 +155,7 @@ if($LOGGED) {
   //Linkit takaisin
   echo "<div class='linkrow bottom'>\n";
   echo "[<a href='foldadmin.php?fid=".$fid."&pid=".$kuvan_id."'>Takaisin kansioon ".$foldername."</a>] - \n";
-  if($kuvan_id > 0) echo "[<a href='picedit.php?fid=".$fid."&pid=".$kuvan_id."'>Muokkaa kuvan tietoja</a>] - \n";
+  if ($kuvan_id > 0) echo "[<a href='picedit.php?fid=".$fid."&pid=".$kuvan_id."'>Muokkaa kuvan tietoja</a>] - \n";
   echo "[<a href='picupload.php?fid=".$fid."' style=''>Lisää seuraava kuva</a>]\n";
   echo "</div>\n";
 

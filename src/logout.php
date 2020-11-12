@@ -2,7 +2,7 @@
 
 <?php
   // Alustetaan käyttäjätiedot
-  if(isset($_SESSION['logged'])) {
+  if (isset($_SESSION['logged'])) {
     unset($_SESSION['logged']);
     unset($_SESSION['userid']);
     unset($_SESSION['user']);
@@ -14,7 +14,7 @@
 
 <?php
 
-  if(!isset($_SESSION['logged'])) {
+  if (!isset($_SESSION['logged'])) {
     echo "<h1>Uloskirjautuminen onnistui</h1>\n";
     echo "<div class='linkrow bottom'>\n";
     echo "[<a href='main.php'>etusivulle</a>] - \n";

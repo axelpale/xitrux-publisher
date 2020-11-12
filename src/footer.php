@@ -19,29 +19,29 @@
   $page_cntr = ( $page_cntr || VIEW_PAGELOAD_COUNTER_PRIVATE && $LOGGED );
 
   // Visitor counter view
-  if( $vis_cntr ) {
+  if ( $vis_cntr ) {
     echo TEXT_VISITOR_COUNTER_A." ".getSiteVisitors(1,$con);
     echo " ".TEXT_VISITOR_COUNTER_B;
   }
 
   // Delimiter
-  if( $vis_cntr && $main_cntr ) {
+  if ( $vis_cntr && $main_cntr ) {
     echo " | ";
   }
 
   // Mainpage counter view
-  if( $main_cntr ) {
+  if ( $main_cntr ) {
     echo TEXT_MAINPAGE_COUNTER_A." ".getSiteMainload(1,$con);
     echo " ".TEXT_MAINPAGE_COUNTER_B;
   }
 
   // Delimiter
-  if( ( $main_cntr || ( !$main_cntr && $vis_cntr ) ) && $page_cntr ) {
+  if ( ( $main_cntr || ( !$main_cntr && $vis_cntr ) ) && $page_cntr ) {
     echo " | ";
   }
 
   // Pageload counter view
-  if( $page_cntr ) {
+  if ( $page_cntr ) {
     echo TEXT_PAGELOAD_COUNTER_A." ".getSitePageload(1,$con);
     echo " ".TEXT_PAGELOAD_COUNTER_B;
   }
@@ -53,18 +53,18 @@
 <div class="footerright">
 <span>
 <?php
-  if($LOGGED) {
-    if( VIEW_USER_NAME ) {
+  if ($LOGGED) {
+    if ( VIEW_USER_NAME ) {
       echo TEXT_USER_NAME_TITLE." ".$_SESSION['user'];
     }
-    if( VIEW_USER_NAME && VIEW_USER_LOGOUT ) {
+    if ( VIEW_USER_NAME && VIEW_USER_LOGOUT ) {
       echo " - ";
     }
-    if( VIEW_USER_LOGOUT ) {
+    if ( VIEW_USER_LOGOUT ) {
       echo "<a class='logout' href='logout.php'>".TEXT_USER_LOGOUT."</a>";
     }
   } else {
-    if( VIEW_USER_LOGIN ) {
+    if ( VIEW_USER_LOGIN ) {
       echo "<a class='login' href='login.php'>".TEXT_USER_LOGIN."</a>";
     }
   }
@@ -85,7 +85,7 @@ Sisällön kopiointi ja käyttö mihin tahansa tarkoituksiin ehdottomasti <a hre
 <img class="preload" src="images/mainmenu/korg00-white.gif" alt="Image Preload" />
 <img class="preload" src="images/mainmenu/irc01-white.gif" alt="Image Preload" />
 
-<?php if($LOGGED) { ?>
+<?php if ($LOGGED) { ?>
 <img class="preload" src="images/mainmenu/piced00-white.gif" alt="Image Preload" />
 <img class="preload" src="images/mainmenu/blog10-white.gif" alt="Image Preload" />
 <img class="preload" src="images/mainmenu/logout00-white.gif" alt="Image Preload" />

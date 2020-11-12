@@ -17,31 +17,16 @@
   // Kansion nimi
   $foldername = "";
 
-  //Haetaan kansion nimi ja kuvajärjestys
+  // Haetaan kansion nimi ja kuvajärjestys
   $sql = "SELECT fold_name, pids FROM korg_folds WHERE fold_id=".$fid." AND fold_hidden=0";
-  $result = mysql_query($sql, $con);
-  if(mysql_num_rows($result) != 0) {
-    $folder_info = mysql_fetch_array($result);
+  $folder_info = korg_get_row($sql, $con);
+  if (count($folder_info) != 0) {
 
     // Kansion nimi
     $foldername = $folder_info['fold_name'];
 
     // Hajotetaan stringinä oleva kuvajärjestys taulukkoon yksittäisiksi pic_id-numeroiksi
     $picorder = pidsStringToArray($folder_info['pids']);
-
-    //// Kansion luokittelua saattaa tulla vielä tarvitsemaan
-    // Kansion luokittelu
-    /*echo "<h2>Luokittelu:";
-
-    $sql = "SELECT tag FROM korg_tags_folds WHERE fold_id=".$fid;
-    $result = mysql_query($sql, $con);
-    if(mysql_num_rows($result) == 0) echo " ei luokittelua";
-    else {
-      while($tag = mysql_fetch_array($result)) {
-        echo " ".$tag['tag'];
-      }
-    }
-    echo "</h2>\n";*/
 
     // Lasketaan saadut rivit eli löytyneitten kuvien määrä
     // Poistetaan ensimmäinen kuva, sillä se on kansion indeksikuva, jota ei haluta näyttää kuvaselaimessa
@@ -56,14 +41,12 @@
     echo "var captions = new Array();\n\n";
 
     $j = 0; // Tallennuspaikan indeksi. Jos kuva on salattu niin tämä ei kasva.
-    for ($i=0; $i<$rowcount; $i++) {
+    for ($i = 0; $i < $rowcount; $i++) {
 
       $sql = "SELECT pic_name,pic_caption,pic_src,pic_orig FROM korg_pics WHERE pic_id=".$picorder[$i]." AND pic_hidden=0";
-      $result = mysql_query($sql, $con);
+      $item = korg_get_row($sql, $con);
 
-      if(mysql_num_rows($result) > 0) {
-        $item = mysql_fetch_array($result);
-
+      if (count($item) > 0) {
         // Vaihdetaan rivinvaihdot toimivaan muotoon
         $captiontext = str_replace("\r\n","<br/>",str_replace("\"","&quot;",$item['pic_caption']));
 
@@ -84,11 +67,11 @@
 
   // Vaihtaa seuraavaan kuvaan
   function next_picture() {
-    if(index+1 < piccount) {
+    if (index + 1 < piccount) {
       index++;
 
       document.getElementById('bigimage').src = srcs[index];
-      if(origs[index] != "") {
+      if (origs[index] != "") {
         document.getElementById('zoom').href = origs[index];
       } else {
         document.getElementById('zoom').href = srcs[index];
@@ -103,7 +86,7 @@
     index = 0;
 
     document.getElementById('bigimage').src = srcs[index];
-    if(origs[index] != "") {
+    if (origs[index] != "") {
       document.getElementById('zoom').href = origs[index];
     } else {
       document.getElementById('zoom').href = srcs[index];
@@ -118,7 +101,7 @@
     index = piccount - 1;
 
     document.getElementById('bigimage').src = srcs[index];
-    if(origs[index] != "") {
+    if (origs[index] != "") {
       document.getElementById('zoom').href = origs[index];
     } else {
       document.getElementById('zoom').href = srcs[index];
@@ -130,11 +113,11 @@
 
   // Vaihtaa edelliseen kuvaan
   function prev_picture() {
-    if(index-1 >= 0) {
+    if (index - 1 >= 0) {
       index--;
 
       document.getElementById('bigimage').src = srcs[index];
-      if(origs[index] != "") {
+      if (origs[index] != "") {
         document.getElementById('zoom').href = origs[index];
       } else {
         document.getElementById('zoom').href = srcs[index];
@@ -193,7 +176,7 @@
 <script type="text/javascript">
   updateIndex();
   document.getElementById('bigimage').src = srcs[0];
-  if(origs[0] != "") {
+  if (origs[0] != "") {
     document.getElementById('zoom').href = origs[0];
   } else {
     document.getElementById('zoom').href = srcs[0];

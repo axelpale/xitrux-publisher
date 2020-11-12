@@ -60,7 +60,7 @@ function updatePidsArray($fold_id, $pids_array, $con) {
 // Päivitetään kansion nimi, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updateFolderName($fold_id, $newname, $con) {
   $sql = "UPDATE korg_folds SET fold_name=\"".$newname."\" WHERE fold_id=".$fold_id;
-  if(korg_update($sql, $con) == 0) return false;
+  if (korg_update($sql, $con) == 0) return false;
   return true;
 }
 
@@ -222,13 +222,13 @@ function createImageFolder($fold_id) {
   $uusi = UPLOAD_DIRECTORY."fid".$fold_id;
 
   // Testataan onko hakemisto jo olemassa
-  if(is_dir($uusi)) {
+  if (is_dir($uusi)) {
     $latest_error = DIR_EXISTS;
     return true;
   } else {
     // Jos hakemisto ei ole olemassa luodaan se.
-    if(mkdir($uusi)) {
-      if(chmod($uusi, 0777)) {
+    if (mkdir($uusi)) {
+      if (chmod($uusi, 0777)) {
         $latest_error = DIR_SUCCESS;
         return true;
       } else {
@@ -327,7 +327,7 @@ function uploadImage($files, $fold_id) {
           $upload_message .= "Väliaikaistiedosto: " . $files["file"]["tmp_name"] . "<br />";
 
           // Muutetaan tiedoston oikeudet siten että tiedosto näkyisi kaikille
-          if(chmod($newfilename, 0644))
+          if (chmod($newfilename, 0644))
             $upload_message .= "Kuvatiedostolle oikeudet: 0644<br/>\n";
           else
             $upload_message .= "Oikeuksien muutos epäonnistui. Tiedosto ei välttämättä näy FTP-yhteydessä.<br/>\n";
@@ -427,9 +427,9 @@ function pidsArrayToString($pids_array) {
 function removeResource( $_target ) {
 
   //file?
-  if( is_file($_target) ) {
-    if( is_writable($_target) ) {
-        if( @unlink($_target) ) {
+  if ( is_file($_target) ) {
+    if ( is_writable($_target) ) {
+        if ( @unlink($_target) ) {
             return true;
         }
     }
@@ -437,23 +437,23 @@ function removeResource( $_target ) {
   }
 
   //dir?
-  if( is_dir($_target) ) {
-    if( is_writeable($_target) ) {
+  if ( is_dir($_target) ) {
+    if ( is_writeable($_target) ) {
         foreach( new DirectoryIterator($_target) as $_res ) {
-            if( $_res->isDot() ) {
+            if ( $_res->isDot() ) {
                 unset($_res);
                 continue;
             }
 
-            if( $_res->isFile() ) {
+            if ( $_res->isFile() ) {
                 removeResource( $_res->getPathName() );
-            } elseif( $_res->isDir() ) {
+            } elseif ( $_res->isDir() ) {
                 removeResource( $_res->getRealPath() );
             }
             unset($_res);
         }
 
-        if( @rmdir($_target) ) {
+        if ( @rmdir($_target) ) {
             return true;
         }
     }

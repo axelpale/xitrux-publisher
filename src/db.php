@@ -26,6 +26,19 @@ function korg_get_rows($sql, $con) {
   return $items;
 }
 
+function korg_insert($sql, $con) {
+  // Return number of rows affected.
+  $result = $con->query($sql);
+  if (!$result) {
+    return 0
+  }
+  return $result->rowCount();
+}
+
+function korg_insert_id($con) {
+  return $con->lastInsertId();
+}
+
 function korg_update($sql, $con) {
   // Return number of rows affected.
   $result = $con->query($sql);

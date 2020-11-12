@@ -6,7 +6,7 @@
 ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -48,7 +48,7 @@ if($LOGGED) {
   printSeparator();
 
   // Testataan voidaanko tiedostoa löytää/lukea
-  if(is_readable($fileupload->getUploaded())) {
+  if (is_readable($fileupload->getUploaded())) {
     echo "<h2>Siirto on onnistunut</h2>\n";
     echo "[<a href='".$fileupload->getUploaded()."' target='_blank'>Avaa tiedosto</a>]\n";
 
@@ -57,9 +57,9 @@ if($LOGGED) {
     $_SESSION['lastupload'] = $fileupload->getOriginal();
 
     // Lisätään lisämateriaalitieto kuvaan
-    if(!updatePictureLink($pid, $fileupload->getUploaded(), $con))
-      echo "Virhe! Tietoa uppauksesta ei voitu päivittää tietokantaan. Error: ".mysql_error()."<br/>\n";
-
+    if (!updatePictureLink($pid, $fileupload->getUploaded(), $con)) {
+      echo "Virhe! Tietoa uppauksesta ei voitu päivittää tietokantaan. <br/>\n";
+    }
   } else echo "<h2>Siirto epäonnistui, tiedostoa ei voida lukea</h2>\n";
 
   //Linkit takaisin

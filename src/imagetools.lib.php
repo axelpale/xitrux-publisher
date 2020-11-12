@@ -22,7 +22,7 @@ class Imaging {
         $ext = strtoupper(pathinfo($img, PATHINFO_EXTENSION));
 
         // JPEG image
-        if(is_file($img) && ($ext == "JPG" OR $ext == "JPEG")) {
+        if (is_file($img) && ($ext == "JPG" OR $ext == "JPEG")) {
 
             $this->format = $ext;
             $this->img_input = ImageCreateFromJPEG($img);
@@ -31,7 +31,7 @@ class Imaging {
         }
 
         // PNG image
-        elseif(is_file($img) && $ext == "PNG") {
+        elseif (is_file($img) && $ext == "PNG") {
 
             $this->format = $ext;
             $this->img_input = ImageCreateFromPNG($img);
@@ -40,7 +40,7 @@ class Imaging {
         }
 
         // GIF image
-        elseif(is_file($img) && $ext == "GIF") {
+        elseif (is_file($img) && $ext == "GIF") {
 
             $this->format = $ext;
             $this->img_input = ImageCreateFromGIF($img);
@@ -58,10 +58,10 @@ class Imaging {
     public function setSize($size = 100) {
 
         // Resize
-        if($this->x_input > $size || $this->y_input > $size) {
+        if ($this->x_input > $size || $this->y_input > $size) {
 
             // Wide
-            if($this->x_input >= $this->y_input) {
+            if ($this->x_input >= $this->y_input) {
 
                 $this->x_output = $size;
                 $this->y_output = ($this->x_output / $this->x_input) * $this->y_input;
@@ -89,7 +89,7 @@ class Imaging {
     // Set image quality (JPEG only)
     public function setQuality($quality) {
 
-        if(is_int($quality)) {
+        if (is_int($quality)) {
 
             $this->quality = $quality;
 
@@ -101,7 +101,7 @@ class Imaging {
     public function saveImg($path) {
 
         // Resize
-        if($this->resize) {
+        if ($this->resize) {
 
             $this->img_output = ImageCreateTrueColor($this->x_output, $this->y_output);
             ImageCopyResampled($this->img_output, $this->img_input, 0, 0, 0, 0, $this->x_output, $this->y_output, $this->x_input, $this->y_input);
@@ -109,25 +109,25 @@ class Imaging {
         }
 
         // Save JPEG
-        if($this->format == "JPG" OR $this->format == "JPEG") {
+        if ($this->format == "JPG" OR $this->format == "JPEG") {
 
-            if($this->resize) { imageJPEG($this->img_output, $path, $this->quality); }
+            if ($this->resize) { imageJPEG($this->img_output, $path, $this->quality); }
             else { copy($this->img_src, $path); }
 
         }
 
         // Save PNG
-        elseif($this->format == "PNG") {
+        elseif ($this->format == "PNG") {
 
-            if($this->resize) { imagePNG($this->img_output, $path); }
+            if ($this->resize) { imagePNG($this->img_output, $path); }
             else { copy($this->img_src, $path); }
 
         }
 
         // Save GIF
-        elseif($this->format == "GIF") {
+        elseif ($this->format == "GIF") {
 
-            if($this->resize) { imageGIF($this->img_output, $path); }
+            if ($this->resize) { imageGIF($this->img_output, $path); }
             else { copy($this->img_src, $path); }
 
         }
@@ -169,7 +169,7 @@ function removePictureFiles($pic_id,$con) {
 
   // Suoritetaan tiedoston palvelimelta poistava funktio
   // Jos tiedostoa ei löydy niin functio palauttaa arvon true.
-  if(removeResource($pic_data['pic_src'])
+  if (removeResource($pic_data['pic_src'])
   && removeResource($pic_data['pic_orig'])
   && removeResource($pic_data['pic_thumb'])) {
     return true;
@@ -208,10 +208,10 @@ function addPictureFiles($source,$saveorig,$fold_id) {
 
   // Tallennetaanko alkuperäinen
   //$saveorig = FALSE;
-  //if($_POST['saveorig'] == "1") $saveorig = TRUE;
+  //if ($_POST['saveorig'] == "1") $saveorig = TRUE;
 
   // Lisätään kuvat
-  if(($source["file"]["error"] == 0)
+  if (($source["file"]["error"] == 0)
   && ($source["file"]["size"] < MAX_FILE_SIZE)
   && (($source["file"]["type"] == "image/gif")
   || ($source["file"]["type"] == "image/jpeg")
@@ -226,7 +226,7 @@ function addPictureFiles($source,$saveorig,$fold_id) {
     $targetfile = UPLOAD_DIRECTORY."fid".$fold_id."/".$source["file"]["name"];
     $pathinfo = pathinfo($targetfile);
     $plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
-    if(file_exists($targetfile)) { // Jos tämän niminen tiedosto on jo olemassa
+    if (file_exists($targetfile)) { // Jos tämän niminen tiedosto on jo olemassa
       $exists_number = 2;
       do {
         $targetfile = $pathinfo['dirname']."/".$plainname."-".$exists_number.".".$pathinfo['extension'];
@@ -235,11 +235,11 @@ function addPictureFiles($source,$saveorig,$fold_id) {
     }
 
     // Alkuperäinen tiedosto: $origfile
-    if($saveorig) {
+    if ($saveorig) {
       $pathinfo = pathinfo($targetfile);
       $plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
       $origfile = $pathinfo['dirname']."/".$plainname."-full.".$pathinfo['extension'];
-      if(file_exists($origfile)) { // Jos tämän niminen tiedosto on jo olemassa
+      if (file_exists($origfile)) { // Jos tämän niminen tiedosto on jo olemassa
         $exists_number = 2;
         do {
           $origfile = $pathinfo['dirname']."/".$plainname."-".$exists_number."-full.".$pathinfo['extension'];
@@ -252,7 +252,7 @@ function addPictureFiles($source,$saveorig,$fold_id) {
     $pathinfo = pathinfo($targetfile);
     $plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
     $thumbfile = $pathinfo['dirname']."/".$plainname."-thumb.".$pathinfo['extension'];
-    if(file_exists($thumbfile)) { // Jos tämän niminen tiedosto on jo olemassa
+    if (file_exists($thumbfile)) { // Jos tämän niminen tiedosto on jo olemassa
       $exists_number = 2;
       do {
         $thumbfile = $pathinfo['dirname']."/".$plainname."-".$exists_number."-thumb.".$pathinfo['extension'];
@@ -268,7 +268,7 @@ function addPictureFiles($source,$saveorig,$fold_id) {
     $image->setQuality(88);
 
     // Tallennetaan alkuperäinen haluttaessa
-    if($saveorig) {
+    if ($saveorig) {
       $image->saveImg($origfile);
       chmod($origfile, 0644);
     }
@@ -294,7 +294,7 @@ function addPictureFiles($source,$saveorig,$fold_id) {
     $aika  = date("j.m-Y, H:i:s");
     $tolog = ($aika." ||| ".$targetfile." ||| ".$source["file"]["size"]."t ||| ".$source["file"]["type"]."\n");
     $tolog .= ($aika." ||| ".$thumbfile." ||| ".$source["file"]["size"]."t ||| ".$source["file"]["type"]."\n");
-    if($saveorig)
+    if ($saveorig)
       $tolog .= ($aika." ||| ".$origfile." ||| ".$source["file"]["size"]."t ||| ".$source["file"]["type"]."\n");
     $log   = @fopen(UPLOAD_DIRECTORY."uploadlog.txt", "a");
 

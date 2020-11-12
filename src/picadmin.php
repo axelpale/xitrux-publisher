@@ -39,7 +39,7 @@ function getNextPicInFold($pid, $fid) {
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   // Tarkistetaan GET tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -48,10 +48,10 @@ if($LOGGED) {
   $pid = sanitizeId($_GET['pid']);
 
   // Kuvan piilottaminen
-  if(isset($_GET['hide'])) {
+  if (isset($_GET['hide'])) {
     $hide = sanitizeId($_GET['hide']);
-    if($hide >= 0) {
-      if(!hideImage($hide, $con)) echo "Kuvan piilottaminen epäonnistui.<br/>\n";
+    if ($hide >= 0) {
+      if (!hideImage($hide, $con)) echo "Kuvan piilottaminen epäonnistui.<br/>\n";
     }
 
     // Tyhjennetään hide-attribuutti, jotta päivitettäessä kuvaa ei turhaan piilotettaisi uudestaan
@@ -59,10 +59,10 @@ if($LOGGED) {
   } else
 
   // Kuvan paljastaminen
-  if(isset($_GET['unhide'])) {
+  if (isset($_GET['unhide'])) {
     $unhide = sanitizeId($_GET['unhide']);
-    if($unhide >= 0) {
-      if(!unhideImage($unhide, $con)) echo "Kuvan paljastaminen epäonnistui.<br/>\n";
+    if ($unhide >= 0) {
+      if (!unhideImage($unhide, $con)) echo "Kuvan paljastaminen epäonnistui.<br/>\n";
     }
 
     // Tyhjennetään unhide-attribuutti, jotta päivitettäessä kuvaa ei turhaan paljastettaisi uudestaan
@@ -70,11 +70,11 @@ if($LOGGED) {
   } else
 
   // Kuvan nimen ja kuvatekstin päivittäminen
-  if(isset($_GET['picupdate'])) {
+  if (isset($_GET['picupdate'])) {
     $picupdate = sanitizeId($_GET['picupdate']);
-    if($picupdate >= 0) {
-      if(!updatePictureName($picupdate, $_POST['newpicname'], $con)) echo "Kuvan nimen vaihtaminen epäonnistui.<br/>\n";
-      if(!updatePictureCaption($picupdate, $_POST['newcaption'], $con)) echo "Kuvatekstin vaihtaminen epäonnistui.<br/>\n";
+    if ($picupdate >= 0) {
+      if (!updatePictureName($picupdate, $_POST['newpicname'], $con)) echo "Kuvan nimen vaihtaminen epäonnistui.<br/>\n";
+      if (!updatePictureCaption($picupdate, $_POST['newcaption'], $con)) echo "Kuvatekstin vaihtaminen epäonnistui.<br/>\n";
     }
 
     // Tyhjennetään picupdate-attribuutti, jotta päivitettäessä kuvatietoja ei turhaan päivitetä uudestaan
@@ -82,7 +82,7 @@ if($LOGGED) {
   } else
 
   // Jos fid-arvoa ei ole määritetty, fid = 0, jotta sivu näyttäisi jotain järkevää vaikka arvoa ei anneta.
-  if(!isset($fid)) $fid = "0";
+  if (!isset($fid)) $fid = "0";
 
   // Haetaan kansion nimi
   $foldername = getFolderName($fid,$con);
@@ -99,16 +99,16 @@ if($LOGGED) {
   // Kuvan nimi
   //echo "<span style='font-size: 10px'>Kuvan nimi:</span>\n";
   echo "<h1>";
-  if($picdata['pic_name'] != "") echo $picdata['pic_name'];
+  if ($picdata['pic_name'] != "") echo $picdata['pic_name'];
   else echo basename($picdata['pic_src']);
-  if($picdata['pic_hidden'] == "1") echo " (piilotettu)";
+  if ($picdata['pic_hidden'] == "1") echo " (piilotettu)";
   echo "</h1>\n\n";
 
   // Kuvatyökalut ovat tässä yleisen siisteyden johdosta
   echo "<div class='linkrow'>\n";
   echo "[<a href='picedit.php?fid=".$fid."&pid=".$picdata['pic_id']."'>muokkaa kuvan tietoja</a>] \n";
   echo "[<a href='delprompt.php?fid=".$fid."&type=pic&pid=".$picdata['pic_id']."'>poista kuva</a>] \n";
-  if($picdata['pic_hidden'] == 1) {
+  if ($picdata['pic_hidden'] == 1) {
     echo "[<a class='toollink' href='foldadmin.php?fid=".$fid."&unhide=".$picdata['pic_id']."'>paljasta kuva</a>] \n";
   } else {
     echo "[<a class='toollink' href='foldadmin.php?fid=".$fid."&hide=".$picdata['pic_id']."'>piilota kuva</a>] \n";
@@ -120,7 +120,7 @@ if($LOGGED) {
   echo "<span id='showhideinfo'>\n";
   echo "[<a onclick='showHiddenInfo()'>näytä lisätiedot</a>]\n";
   echo "</span> \n\n";
-  if($picdata['pic_thumb'] == "")
+  if ($picdata['pic_thumb'] == "")
     echo "[<a href='picmakethumb.exe.php?fid=".$fid."&pid=".$picdata['pic_id']."'>tee pikkukuva</a>] \n";
   echo hiddentoolsEnd();
   echo "</div>\n\n";
@@ -135,7 +135,7 @@ if($LOGGED) {
   echo "</a>\n";
   // Kuvateksti
   echo "<div class='caption'>\n";
-  if($picdata['pic_caption'] != "") {
+  if ($picdata['pic_caption'] != "") {
     echo nl2br($picdata['pic_caption'])."\n<br/><br/>\n";
   }
   // Lisämateriaali

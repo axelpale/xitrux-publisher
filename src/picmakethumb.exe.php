@@ -8,9 +8,9 @@
 
   // Käyttäjän statuksen tarkastaminen
   $LOGGED = false;
-  if($_SESSION['logged'] == "logged") $LOGGED = true;
+  if ($_SESSION['logged'] == "logged") $LOGGED = true;
 
-  if($LOGGED) {
+  if ($LOGGED) {
 
     include("admin-functions.php");
     include("imagetools.lib.php");
@@ -29,7 +29,7 @@
     $pathinfo = pathinfo($filename);
     $plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
     $thumbfile = $pathinfo['dirname']."/".$plainname."-thumb.".$pathinfo['extension'];
-    if(file_exists($thumbfile)) { // Jos tämän niminen tiedosto on jo olemassa
+    if (file_exists($thumbfile)) { // Jos tämän niminen tiedosto on jo olemassa
       $exists_number = 2;
       do {
         $thumbfile = $pathinfo['dirname']."/".$plainname."-".$exists_number."-thumb.".$pathinfo['extension'];
@@ -46,9 +46,8 @@
     // Päivitetään kuvan pic_thumb-tieto
     updatePictureThumb($pid,$thumbfile,$con);
 
-    mysql_close($con);
-
+    // Close connection
+    $con = null;
   }
 
   header( 'Location: picadmin.php?fid='.$fid.'&pid='.$pid );
-?>

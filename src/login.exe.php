@@ -8,20 +8,21 @@
 
   $con = korg_connect();
 
-  if($_SESSION['fails'] < 5) {
+  $alphabet = "abcdefghijklmnopqrstuvxyzåäöABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ-_^1234567890";
 
-    if(strspn($_POST['username'],"abcdefghijklmnopqrstuvxyzåäöABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ-_^1234567890") == strlen($_POST['username'])) {
-      if(strspn($_POST['password'],"abcdefghijklmnopqrstuvxyzåäöABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ-_^1234567890") == strlen($_POST['password'])) {
+  if ($_SESSION['fails'] < 5) {
+
+    if (strspn($_POST['username'], $alphabet) == strlen($_POST['username'])) {
+      if (strspn($_POST['password'], $alphabet) == strlen($_POST['password'])) {
 
         $username = $_POST['username'];
         $password = $_POST['password'];
 
         $sql = "SELECT * FROM korg_users WHERE korg_name='".$username."' ";
         $sql .= "AND korg_code=AES_ENCRYPT('".$password."','315420v4')";
-        $result = mysql_query($sql, $con);
+        $row = korg_get_row($sql, $con);
 
-        if(mysql_num_rows($result) == 1) {
-          $row = mysql_fetch_array($result);
+        if (count($row) > 0) {
           $_SESSION['userid'] = $row['user_id'];
           $_SESSION['user'] = $row['korg_name'];
           $_SESSION['logged'] = "logged";
@@ -29,16 +30,17 @@
           $_SESSION['filters'] = ""; // Asettaa kansiohallinnan suodatusoletuksen
           $_SESSION['lastupload'] = ""; // Viimeisimmän lisätyn kuvan hakemisto
 
+          // Increase times logged in
           $sql = "UPDATE korg_users SET times_logged=(times_logged+1), prev_login='".date("Y-m-d H:i:s")."' ";
           $sql = $sql."WHERE user_id=".$row['user_id'];
-          mysql_query($sql, $con);
-
+          korg_update($sql, $con);
         }
       }
     }
   }
 
-  mysql_close($con);
+  // Close connection
+  $con = null;
 
   header( 'Location: logged.php');
 ?>

@@ -2,7 +2,7 @@
   include("header1.php");
 
   // Mainpage load counter, etusivun latausten laskuri
-  if( ENABLE_MAINPAGE_COUNTER ) {
+  if (ENABLE_MAINPAGE_COUNTER) {
     addMainload(1,$con);
   }
 
@@ -15,19 +15,18 @@
 
   // Listataan uusin, joka sisältää indeksikuvan
   $sql = "SELECT fold_id, fold_name, pids, fold_issued FROM korg_folds WHERE fold_hidden=0 ORDER BY fold_issued DESC";
-  $result = mysql_query($sql, $con);
-  $fold_array[0] = mysql_fetch_array($result);
-  if(strlen($fold_array[0]['pids']) < 1) {
-    $fold_array[0] = mysql_fetch_array($result);
-    if(strlen($fold_array[0]['pids']) < 1) {
-      $fold_array[0] = mysql_fetch_array($result);
+  $rows = korg_get_rows($sql, $con);
+  $fold_array[0] = $rows[0];
+  if (strlen($fold_array[0]['pids']) < 1) {
+    $fold_array[0] = $rows[1];
+    if (strlen($fold_array[0]['pids']) < 1) {
+      $fold_array[0] = $rows[2];
     }
   }
-  //$fold_array[2] = mysql_fetch_array($result);
 
   printSeparator();
 
-  foreach($fold_array as $row) {
+  foreach ($fold_array as $row) {
     echo "<div class='picbrowser'>\n";
     //echo "<div class='tags'>Luokittelu:".printFolderTags($row['fold_id'], $con)."</div>\n";
     $pic_array = getPictureData( getIndexImagePid($row['fold_id'],$con) , $con);

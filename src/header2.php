@@ -5,14 +5,14 @@
 
   <?php
     // Varoitus vanhasta selaimesta
-    if( ENABLE_IEXPLORER_WARNING ) {
+    if ( ENABLE_IEXPLORER_WARNING ) {
   ?>
 
   <div class="errorheader">
     <script type="text/javascript">
       //<!-- vanhemmille selaimille .P
       if (navigator.appName=="Microsoft Internet Explorer") {
-        if(parseFloat(navigator.appVersion) < 7) {
+        if (parseFloat(navigator.appVersion) < 7) {
           document.write("<?php echo BROWSER_WARNING_TEXT; ?>");
         }
       }
@@ -47,11 +47,11 @@
 
 <?php
   // Right banner image enable
-  if( ENABLE_BANNER_RIGHT ) {
+  if ( ENABLE_BANNER_RIGHT ) {
 
     echo "<div class=\"bannerimageright\" style=\"background-image: url('";
 
-    if( ENABLE_BANNER_RIGHT_RANDOM ) {
+    if ( ENABLE_BANNER_RIGHT_RANDOM ) {
       // Random banner image
       echo getRandomImageSrc( BANNER_RIGHT_RANDOM_FOLDER_ID, $con );
     } else {
@@ -70,7 +70,7 @@
     <!-- Menut -->
     <?php
       // Näytetään filleri ainoastaan julkisella puolella
-      if($LOGGED) {
+      if ($LOGGED) {
         echo "<div class='mainmenu'>\n";
         include("usermenu.php");
       }

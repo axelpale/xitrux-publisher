@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -19,7 +19,7 @@ if($LOGGED) {
   // Linkki takaisin kansionäkymään
   echo "<div class='linkrow top'>\n";
   echo "[<a href='picadmin.php?fid=".$fid."&pid=".$pid."'>Takaisin kuvaan ";
-  if($picdata['pic_name'] != "") echo $picdata['pic_name'];
+  if ($picdata['pic_name'] != "") echo $picdata['pic_name'];
   else echo basename($picdata['pic_src']);
   echo "</a>]\n";
   echo "</div>\n";
@@ -29,7 +29,7 @@ if($LOGGED) {
   printSeparator();
 
   // Tiedostoa kysyvä lomake
-  if($_SESSION['lastupload'] != "") { // Näyttää viimeisimmän lisäyksen. Tämä helpottaa pitkien settien lisäämistä
+  if ($_SESSION['lastupload'] != "") { // Näyttää viimeisimmän lisäyksen. Tämä helpottaa pitkien settien lisäämistä
     echo "<div style='margin-bottom: 5px;'>Viimeisin lataus: ".$_SESSION['lastupload']."</div>\n";
   }
   echo "<form action='fileuploader.php?fid=".$fid."&pid=".$pid."' method='post' enctype='multipart/form-data'>\n";

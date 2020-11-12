@@ -8,9 +8,9 @@
 
   // Käyttäjän statuksen tarkastaminen
   $LOGGED = false;
-  if($_SESSION['logged'] == "logged") $LOGGED = true;
+  if ($_SESSION['logged'] == "logged") $LOGGED = true;
 
-  if($LOGGED) {
+  if ($LOGGED) {
 
     include("admin-functions.php");
 
@@ -24,8 +24,8 @@
     // Tietojen päivittäminen
     movePictureTop($fid,$pid,$con);
 
-    mysql_close($con);
-
+    // Close connection
+    $con = null;
   }
 
   header( 'Location: foldadmin.php?fid='.$fid.'#'.$pid );

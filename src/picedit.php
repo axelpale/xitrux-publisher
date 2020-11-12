@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if($LOGGED) {
+if ($LOGGED) {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);
@@ -24,7 +24,7 @@ if($LOGGED) {
 
   // Otsikko
   echo "<h1>Kuvan '";
-  if($picdata['pic_name'] != "") echo $picdata['pic_name'];
+  if ($picdata['pic_name'] != "") echo $picdata['pic_name'];
   else echo basename($picdata['pic_src']);
   echo "' tietojen muuttaminen</h1>\n";
   printSeparator();
