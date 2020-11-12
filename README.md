@@ -14,7 +14,7 @@ Copy `src/config-sample.php` to `src/config.php` and fill in your values.
 
 ## Lint
 
-[one-liner php7 linter](https://gist.github.com/mikaelz/c5d08ce9b7c575594c20e7dd75f71a05)
+See [one line php7 linter](https://gist.github.com/mikaelz/c5d08ce9b7c575594c20e7dd75f71a05)
 
 ## License
 
