@@ -129,7 +129,7 @@ if ($LOGGED) {
     // Tarkistetaan GET['pid'] tietoturvan vuoksi
     $pid = sanitizeId($_GET['pid']);
 
-    $id_pos = getPicturePosition($fid,$pid,$con);
+    $id_pos = getPicturePosition($fid, $pid, $con);
     $first = $id_pos - ($id_pos % $amount); // Pyöristää luvun alempaan amountiin
   }
 
@@ -243,7 +243,7 @@ if ($LOGGED) {
           }
         }
         // validateSrc tarkistaa onko tiedosto olemassa ja palauttaa oletuskuvan jollei.
-        echo "' src='".validateSrc($item['pic_thumb'],$item['pic_src'])."' alt='".$item['pic_name']."' />\n";
+        echo "' src='".validateSrc($item['pic_thumb'], $item['pic_src'])."' alt='".$item['pic_name']."' />\n";
         echo "</a>\n\n";
 
         // Työkalut

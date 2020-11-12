@@ -11,10 +11,10 @@ if ($LOGGED) {
   $pid = sanitizeId($_GET['pid']);
 
   // Haetaan kuvan tiedot
-  $picdata = getPictureData($pid,$con);
+  $picdata = getPictureData($pid, $con);
 
   // Haetaan kansion nimi
-  $foldername = getFolderName($fid,$con);
+  $foldername = getFolderName($fid, $con);
 
   // Linkki takaisin kansionäkymään
   echo "<div class='linkrow top'>\n";

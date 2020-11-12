@@ -15,7 +15,7 @@ if ($LOGGED) {
   $pid = sanitizeId($_GET['pid']);
 
   // Haetaan kansionimi
-  $foldername = getFolderName($fid,$con);
+  $foldername = getFolderName($fid, $con);
 
   // Linkki takaisin kansionäkymään
   echo "<div class='linkrow top'>\n";

@@ -44,7 +44,7 @@
     $thumb->clearCache();
 
     // Päivitetään kuvan pic_thumb-tieto
-    updatePictureThumb($pid,$thumbfile,$con);
+    updatePictureThumb($pid, $thumbfile, $con);
 
     // Close connection
     $con = null;

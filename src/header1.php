@@ -18,13 +18,13 @@
   if (ENABLE_VISITOR_COUNTER) {
     if (!isset($_SESSION['oldvisitor'])) {
       $_SESSION['oldvisitor'] = 1;
-      addVisitor(1,$con);
+      addVisitor(1, $con);
     }
   }
 
   // Page load counter, sivujen latausmäärän laskuri
   if (ENABLE_PAGELOAD_COUNTER) {
-    addPageload(1,$con);
+    addPageload(1, $con);
   }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

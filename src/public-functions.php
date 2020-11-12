@@ -224,8 +224,8 @@ function setGets($newgets) {
 
 // Palauttaa siistityn päivämäärän
 function getCleanDate($datetime) {
-  $date_time = explode(" ",$datetime);
-  $parts = explode("-",$date_time[0]);
+  $date_time = explode(" ", $datetime);
+  $parts = explode("-", $date_time[0]);
   return intval($parts[2]).".".intval($parts[1]).".".$parts[0];
 }
 

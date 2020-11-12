@@ -18,7 +18,7 @@ if (isset($_SESSION['logged'])) {
   // Jos poistettavana on kansio
   if ($type == "fold") {
 
-    $foldername = getFolderName($fid,$con);
+    $foldername = getFolderName($fid, $con);
 
     // Linkki takaisin kansionäkymään
     echo "<div class='linkrow top'>\n";

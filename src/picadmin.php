@@ -5,9 +5,9 @@
 /*// Seuraavan kuvan id-numero
 function getNextPicInFold($pid, $fid) {
 
-  $pids_string = getFolderPids($fold_id,$connection);
+  $pids_string = getFolderPids($fold_id, $connection);
   $pids_array = pidsStringToArray($pids_string);
-  $pos = array_search($pic_id,$pids_array);
+  $pos = array_search($pic_id, $pids_array);
 
   //seuraavan kuvan sijainti
   $new_index = $pos + 1;
@@ -85,10 +85,10 @@ if ($LOGGED) {
   if (!isset($fid)) $fid = "0";
 
   // Haetaan kansion nimi
-  $foldername = getFolderName($fid,$con);
+  $foldername = getFolderName($fid, $con);
 
   // Haetaan kuvan tiedot
-  $picdata = getPictureData($pid,$con);
+  $picdata = getPictureData($pid, $con);
 
   // Linkit taaksepäin
   echo "<div class='linkrow top'>\n";
@@ -128,7 +128,7 @@ if ($LOGGED) {
   // Näytetään kuva ja kuvateksti
   echo "<div class='picbrowser'>\n";
   echo "<a href='";
-  echo validateSrc($picdata['pic_orig'],$picdata['pic_src']);
+  echo validateSrc($picdata['pic_orig'], $picdata['pic_src']);
   echo "' target='_blank'>\n";
   echo "<img src='".$picdata['pic_src']."' ";
   echo "style='border: 0px solid black;'/>\n";

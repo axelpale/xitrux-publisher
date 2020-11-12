@@ -82,7 +82,7 @@
       echo "<img src='";
 
       // Haetaan kuvan tiedot
-      $indeximage = getPictureData(getIndexImagePid($item['fold_id'],$con), $con);
+      $indeximage = getPictureData(getIndexImagePid($item['fold_id'], $con), $con);
 
       // Jos indeksikuvaa ei vielä ole, niin näytetään oletuskuva
       $indexsrc = validateSrc($indeximage['pic_thumb'], $indeximage['pic_src']);
@@ -95,7 +95,7 @@
 
       echo "<div class='issued'>\n";
       echo "Julkaistu ".getCleanDate($item['fold_issued'])." - ";
-      echo printFolderTags($item['fold_id'],$con);
+      echo printFolderTags($item['fold_id'], $con);
       echo "</div>\n";
 
       echo "<p>\n".nl2br($indeximage['pic_caption']);

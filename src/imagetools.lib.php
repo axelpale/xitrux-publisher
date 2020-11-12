@@ -162,7 +162,7 @@ class Imaging {
 // Funktio removePictureFiles: Poistaa kuvaan liittyvät kuvatiedostot palvelimelta
 // Parametrit: Kuvan id-numero ja MySQL-yhteys
 // Palauttaa true jos poisto onnistui, muutoin false;
-function removePictureFiles($pic_id,$con) {
+function removePictureFiles($pic_id, $con) {
   // Haetaan poistettavan kuvan kuvatiedostot
   // Niitä saattaa olla kolme: alkuperäinen, optimoitu ja pikkukuva
   $pic_data = getPictureData($pic_id, $con);
@@ -186,7 +186,7 @@ function removePictureFiles($pic_id,$con) {
 // INT uppauskansion id-numero.
 // Palauttaa taulukon, jossa uusien kuvien hakemistot.
 // Palauttaa FALSE, jos uppiminen ei onnistu
-function addPictureFiles($source,$saveorig,$fold_id) {
+function addPictureFiles($source, $saveorig, $fold_id) {
 
   // Luodaan kansio, johon kuva upataan
   // Kansiot nimetään FID-numeron mukaan (folder id)

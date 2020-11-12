@@ -48,7 +48,7 @@
 
       if ($item !== false) {
         // Vaihdetaan rivinvaihdot toimivaan muotoon
-        $captiontext = str_replace("\r\n","<br/>",str_replace("\"","&quot;",$item['pic_caption']));
+        $captiontext = str_replace("\r\n","<br/>",str_replace("\"","&quot;", $item['pic_caption']));
 
         // Tallennetaan tiedot JS-taulukkoon
         echo "srcs[".$j."] = \"".$item['pic_src']."\";\n";

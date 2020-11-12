@@ -7,6 +7,6 @@
 
 <div class="latestupdate">Viimeisin päivitys:
 <?php
-  echo getCleanDate(getSiteUpdate(1,$con)); // 1 on kohteet.org sivuston site_id
+  echo getCleanDate(getSiteUpdate(1, $con)); // 1 on kohteet.org sivuston site_id
 ?>
 </div>

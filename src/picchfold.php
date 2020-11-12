@@ -11,7 +11,7 @@ if ($LOGGED) {
   $pid = sanitizeId($_GET['pid']);
 
   // Haetaan kansion nimi
-  //$folder_name = getFolderName($fid,$con);
+  //$folder_name = getFolderName($fid, $con);
 
   // Haetaan kuvan tiedot
   $picdata = getPictureData($pid, $con);

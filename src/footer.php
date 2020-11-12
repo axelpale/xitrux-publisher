@@ -20,7 +20,7 @@
 
   // Visitor counter view
   if ( $vis_cntr ) {
-    echo TEXT_VISITOR_COUNTER_A." ".getSiteVisitors(1,$con);
+    echo TEXT_VISITOR_COUNTER_A." ".getSiteVisitors(1, $con);
     echo " ".TEXT_VISITOR_COUNTER_B;
   }
 
@@ -31,7 +31,7 @@
 
   // Mainpage counter view
   if ( $main_cntr ) {
-    echo TEXT_MAINPAGE_COUNTER_A." ".getSiteMainload(1,$con);
+    echo TEXT_MAINPAGE_COUNTER_A." ".getSiteMainload(1, $con);
     echo " ".TEXT_MAINPAGE_COUNTER_B;
   }
 
@@ -42,7 +42,7 @@
 
   // Pageload counter view
   if ( $page_cntr ) {
-    echo TEXT_PAGELOAD_COUNTER_A." ".getSitePageload(1,$con);
+    echo TEXT_PAGELOAD_COUNTER_A." ".getSitePageload(1, $con);
     echo " ".TEXT_PAGELOAD_COUNTER_B;
   }
 

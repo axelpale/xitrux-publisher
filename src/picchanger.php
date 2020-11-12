@@ -42,12 +42,12 @@ if (isset($_SESSION['logged'])) {
   // Poistetaan vanhat kuvat palvelimelta
   // Jos kuvia ei ole enää olemassa, funktio ymmärtää
   // ne onnistuneesti poistetuiksi
-  if (!removePictureFiles($pid,$con)) {
+  if (!removePictureFiles($pid, $con)) {
       echo "<span class='error'>Vanhan kuvan poisto epäonnistui.</span><br/>\n";
   }
 
   // Lisätään kuvasta palvelimelle kaksi tai kolme versiota
-  $newpaths = addPictureFiles($_FILES,($_POST['saveorig'] == "1"),$fid);
+  $newpaths = addPictureFiles($_FILES,($_POST['saveorig'] == "1"), $fid);
 
   echo "Väliaikainen tiedosto: ".$newpaths['tempfile']."<br/><br/>\n";
   echo "Tallennetut:<br/>\n";

@@ -30,7 +30,7 @@
       //Säästetään neljä seuraavaa riviä siltä varalta jos halutaan näyttää linkkien lisäyspäivämäärä
       //echo "<div class='issued'>\n";
       //echo "Julkaistu ".getCleanDate($item['fold_issued'])." - ";
-      //echo printFolderTags($item['fold_id'],$con);
+      //echo printFolderTags($item['fold_id'], $con);
       //echo "</div>\n";
 
       echo "<p>\n".nl2br($item['pic_caption']);

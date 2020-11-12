@@ -19,7 +19,7 @@ if (isset($_SESSION['logged'])) {
   if ($type == "fold") {
 
     // Haetaan poistettavan kansion nimi
-    $foldername = getFolderName($fid,$con);
+    $foldername = getFolderName($fid, $con);
 
     // hakemisto
     $directory = "images/upload/fid".$fid;
@@ -69,7 +69,7 @@ if (isset($_SESSION['logged'])) {
       $pic_data = getPictureData($pid, $con);
 
       // Haetaan kansion nimi tietokannasta, jotta tiedetään mistä kansiosta kuva poistetaan
-      $foldername = getFolderName($fid,$con);
+      $foldername = getFolderName($fid, $con);
 
       // Linkki takaisin kansionäkymään
       echo "<div class='linkrow top'>\n";

@@ -3,7 +3,7 @@
 
   // Mainpage load counter, etusivun latausten laskuri
   if (ENABLE_MAINPAGE_COUNTER) {
-    addMainload(1,$con);
+    addMainload(1, $con);
   }
 
   include("header2.php");
@@ -29,7 +29,7 @@
   foreach ($fold_array as $row) {
     echo "<div class='picbrowser'>\n";
     //echo "<div class='tags'>Luokittelu:".printFolderTags($row['fold_id'], $con)."</div>\n";
-    $pic_array = getPictureData( getIndexImagePid($row['fold_id'],$con) , $con);
+    $pic_array = getPictureData( getIndexImagePid($row['fold_id'], $con) , $con);
 
     echo "<div class='heading'><div class='leftside'>\n";
     echo "<h1>[<a href='picbrowser.php?fid=".$row['fold_id']."'>";

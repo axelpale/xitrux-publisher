@@ -14,8 +14,8 @@ if ($LOGGED) {
   $fid = sanitizeId($_GET['fid']);
 
   // Haetaan kansionimi ja kuvien id-numerot
-  $foldername = getFolderName($fid,$con);
-  $folderpids = getFolderPids($fid,$con);
+  $foldername = getFolderName($fid, $con);
+  $folderpids = getFolderPids($fid, $con);
 
   // Virheilmoitus jos kuvien uppaus ei onnistu
   $uploaderror = "Kuvaa ei ole määritetty tai se on liian suuri (max ";
@@ -23,7 +23,7 @@ if ($LOGGED) {
   $uploaderror .= $fid."'>uudelleen</a>.";
 
   // Lisätään kuvasta palvelimelle kaksi tai kolme versiota
-  $newpaths = addPictureFiles($_FILES,($_POST['saveorig'] == "1"),$fid) or die($uploaderror);
+  $newpaths = addPictureFiles($_FILES,($_POST['saveorig'] == "1"), $fid) or die($uploaderror);
 
   // Tulosteet
   // Tietojenkäsittelyn tulosteet kerätään nyt alkuvaiheessa,
@@ -91,10 +91,10 @@ if ($LOGGED) {
       // numerot lisätään pids-ryppääseen.
 
       // Haetaan tietokannassa olevien kuvien pic_id-arvot
-      $pids_pics = getPictureIds($fid,$con);
+      $pids_pics = getPictureIds($fid, $con);
 
       // Haetaan kansion tiedoissa olevat kuvaidt pids-kentästä
-      $pids_fold = getPidsArray($fid,$con);
+      $pids_fold = getPidsArray($fid, $con);
 
       // Vertaillaan näitä jonoja keskenään
       $diff1 = array_diff($pids_pics, $pids_fold); //Alkiot, jotka puuttuvat jonosta $pids_fold

@@ -9,7 +9,7 @@ if ($LOGGED) {
   $nid = sanitizeId($_GET['nid']);
 
   // Haetaan muistiinpanon tiedot
-  $notedata = getNoteData($nid,$con);
+  $notedata = getNoteData($nid, $con);
 
   // Linkki takaisin muistiinpanoihin
   echo "<div class='linkrow top'>\n";

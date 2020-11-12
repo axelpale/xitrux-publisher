@@ -22,7 +22,7 @@
     $pid = sanitizeId($_GET['pid']);
 
     // Tietojen päivittäminen
-    movePictureTop($fid,$pid,$con);
+    movePictureTop($fid, $pid, $con);
 
     // Close connection
     $con = null;

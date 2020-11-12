@@ -561,7 +561,7 @@ function movePictureTop($fold_id, $pic_id, $con) {
   $pids_array = getPidsArray($fold_id, $con);
   $array_lenght = count($pids_array);
 
-  $pic_index = array_search($pic_id,$pids_array);
+  $pic_index = array_search($pic_id, $pids_array);
 
   if ($pic_index >= 0 && $pic_index < $array_lenght) {
     //$buffer_array sisältää yhden alkion eli siirrettävän numeron

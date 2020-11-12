@@ -21,7 +21,7 @@
     $nid = sanitizeId($_GET['nid']);
 
     // Tietojen päivittäminen
-    updateNoteBody($nid,$_POST['newnotebody'],$con);
+    updateNoteBody($nid, $_POST['newnotebody'], $con);
 
     // Close connection
     $con = null;
