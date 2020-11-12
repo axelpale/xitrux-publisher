@@ -7,14 +7,14 @@
 <?php
 	// Counters
 	echo "<span>";
-	
+
 	// Precalculate logics
 	$vis_cntr = ( VIEW_VISITOR_COUNTER_PUBLIC && !$LOGGED );
 	$vis_cntr = ( $vis_cntr || VIEW_VISITOR_COUNTER_PRIVATE && $LOGGED );
-	
+
 	$main_cntr = ( VIEW_MAINPAGE_COUNTER_PUBLIC && !$LOGGED );
 	$main_cntr = ( $main_cntr || VIEW_MAINPAGE_COUNTER_PRIVATE && $LOGGED );
-	
+
 	$page_cntr = ( VIEW_PAGELOAD_COUNTER_PUBLIC && !$LOGGED );
 	$page_cntr = ( $page_cntr || VIEW_PAGELOAD_COUNTER_PRIVATE && $LOGGED );
 
@@ -23,29 +23,29 @@
 		echo TEXT_VISITOR_COUNTER_A." ".getSiteVisitors(1,$con);
 		echo " ".TEXT_VISITOR_COUNTER_B;
 	}
-	
+
 	// Delimiter
 	if( $vis_cntr && $main_cntr ) {
 		echo " | ";
 	}
-	
+
 	// Mainpage counter view
 	if( $main_cntr ) {
 		echo TEXT_MAINPAGE_COUNTER_A." ".getSiteMainload(1,$con);
 		echo " ".TEXT_MAINPAGE_COUNTER_B;
 	}
-	
+
 	// Delimiter
 	if( ( $main_cntr || ( !$main_cntr && $vis_cntr ) ) && $page_cntr ) {
 		echo " | ";
 	}
-	
+
 	// Pageload counter view
 	if( $page_cntr ) {
 		echo TEXT_PAGELOAD_COUNTER_A." ".getSitePageload(1,$con);
 		echo " ".TEXT_PAGELOAD_COUNTER_B;
 	}
-	
+
 	echo "</span>\n";
 ?>
 </div>
@@ -96,5 +96,5 @@ Sisällön kopiointi ja käyttö mihin tahansa tarkoituksiin ehdottomasti <a hre
 
 <?php
 	// Suljetaan sivuston mysql-yhteys
-	mysql_close($con);
+	$con = null;
 ?>
