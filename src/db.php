@@ -7,7 +7,7 @@ include_once("config.php");
 function korg_connect() {
   // MySQL-yhteys
   try {
-    $dbh = new PDO('mysql:host=localhost;dbname='.DBNAME, DB_USER, DB_PASS);
+    $dbh = new PDO('mysql:host=localhost;dbname='.DB_NAME, DB_USER, DB_PASS);
   } catch (PDOException $e) {
     print "Could not connect: " . $e->getMessage() . "<br/>";
     die();
