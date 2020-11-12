@@ -46,7 +46,7 @@ else echo "Tiedoston ".$hakemisto." muutos epäonnistui.";
 //} else echo "Mod-arvo virheellinen.";
 
 } else {
-	include("unauthorized.php");		
+  include("unauthorized.php");
 }
 
 ?>

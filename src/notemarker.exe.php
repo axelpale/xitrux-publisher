@@ -1,32 +1,32 @@
 <?php
 
-	// Käynnistetään sessio kirjautumista varten ////Huom! Sessio saattaa jäädä päälle vaikka selaimen sulkee(?)
-	session_start();
+  // Käynnistetään sessio kirjautumista varten ////Huom! Sessio saattaa jäädä päälle vaikka selaimen sulkee(?)
+  session_start();
 
-	// Sivuston julkisella puolella käytettävät php-funktiot, esim printSeparator()
-	include("public-functions.php");
+  // Sivuston julkisella puolella käytettävät php-funktiot, esim printSeparator()
+  include("public-functions.php");
 
-	// Käyttäjän statuksen tarkastaminen
-	$LOGGED = false;
-	if($_SESSION['logged'] == "logged") $LOGGED = true;
+  // Käyttäjän statuksen tarkastaminen
+  $LOGGED = false;
+  if($_SESSION['logged'] == "logged") $LOGGED = true;
 
-	if($LOGGED) {
+  if($LOGGED) {
 
-		include("admin-functions.php");
+    include("admin-functions.php");
 
-		$con = korg_connect();
+    $con = korg_connect();
 
-		// nid = note_id = muistiinpanon id-numero
-		// Tarkistetaan GET['nid'] tietoturvan vuoksi
-		$nid = sanitizeId($_GET['nid']);
-		$marked = sanitizeId($_GET['marked']);
+    // nid = note_id = muistiinpanon id-numero
+    // Tarkistetaan GET['nid'] tietoturvan vuoksi
+    $nid = sanitizeId($_GET['nid']);
+    $marked = sanitizeId($_GET['marked']);
 
-		// Tietojen päivittäminen
-		updateNoteMarked($nid,$marked,$con);
+    // Tietojen päivittäminen
+    updateNoteMarked($nid,$marked,$con);
 
-		mysql_close($con);
+    mysql_close($con);
 
-	}
+  }
 
-	header( 'Location: project.php#'.$nid );
+  header( 'Location: project.php#'.$nid );
 ?>

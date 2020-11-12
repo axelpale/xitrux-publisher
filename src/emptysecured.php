@@ -4,13 +4,13 @@
 <?php
 if($_SESSION['logged'] == "logged") {
 
-	echo "<h1>Kohteet.org</h1>\n";
-	printSeparator();
+  echo "<h1>Kohteet.org</h1>\n";
+  printSeparator();
 
-	printSeparator();
+  printSeparator();
 
 } else {
-	include("unauthorized.php");
+  include("unauthorized.php");
 }
 ?>
 

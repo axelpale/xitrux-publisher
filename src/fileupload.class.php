@@ -3,161 +3,161 @@
 // Class for file uploading
 class FileUpload {
 
-	// Suurin mahdollinen koko
-	private $MAX_UPLOAD_SIZE = 20000000;
+  // Suurin mahdollinen koko
+  private $MAX_UPLOAD_SIZE = 20000000;
 
-	// Upload directory
-	private $upload_dir = "";
+  // Upload directory
+  private $upload_dir = "";
 
-	// Lokitiedosto
-	private $logfile = "";
+  // Lokitiedosto
+  private $logfile = "";
 
-	// Väliaikaistiedosto
-	private $tempfile = "";
+  // Väliaikaistiedosto
+  private $tempfile = "";
 
-	// Tiedoston tiedot
-	private $filename = "";
-	private $filetype = "";
-	private $filesize = "";
+  // Tiedoston tiedot
+  private $filename = "";
+  private $filetype = "";
+  private $filesize = "";
 
-	// Kohdetiedosto
-	private $targetfile = "";
+  // Kohdetiedosto
+  private $targetfile = "";
 
-	// Onko uppaaminen onnistunut
-	private $is_success = FALSE;
+  // Onko uppaaminen onnistunut
+  private $is_success = FALSE;
 
-	// Asettaa hakemiston johon tiedosto siirretään
-	// Jollei hakemistoa ole olemassa, tehdään sellainen
-	public function setUploadDir($directory) {
+  // Asettaa hakemiston johon tiedosto siirretään
+  // Jollei hakemistoa ole olemassa, tehdään sellainen
+  public function setUploadDir($directory) {
 
-		// Lisätään hakemistopolun perään "/" jollei sitä löydy
-		if(substr($directory,-1,1) != "/") {
-			$directory .= "/";
-		}
+    // Lisätään hakemistopolun perään "/" jollei sitä löydy
+    if(substr($directory,-1,1) != "/") {
+      $directory .= "/";
+    }
 
-		// Luodaan hakemisto, jollei se ole olemassa
-		if($this->createDir($directory)) {
-			$this->upload_dir = $directory;
-			return true;
-		}
+    // Luodaan hakemisto, jollei se ole olemassa
+    if($this->createDir($directory)) {
+      $this->upload_dir = $directory;
+      return true;
+    }
 
-		// Jos homma kusee
-		return false;		
-	}
-	
-	// Tallentaa tiedoston
-	public function save($source) {
+    // Jos homma kusee
+    return false;
+  }
 
-		// Jos uppauskansiota ei ole olemassa
-		// luodaan sellainen
-		createImageFolder($fold_id);
+  // Tallentaa tiedoston
+  public function save($source) {
 
-		// Lisätään tiedosto
-		if(($this->upload_dir != "") && (is_dir($this->upload_dir))
-		&& ($source["file"]["error"] == 0) 
-		&& ($source["file"]["size"] < $this->MAX_UPLOAD_SIZE)) {
+    // Jos uppauskansiota ei ole olemassa
+    // luodaan sellainen
+    createImageFolder($fold_id);
 
-			// Tiedoston tiedot
-			$this->filename = $source["file"]["name"];
-			$this->filetype = $source["file"]["type"];
-			$this->filesize = $source["file"]["size"];
+    // Lisätään tiedosto
+    if(($this->upload_dir != "") && (is_dir($this->upload_dir))
+    && ($source["file"]["error"] == 0)
+    && ($source["file"]["size"] < $this->MAX_UPLOAD_SIZE)) {
 
-			// Väliaikaistiedosto
-			$this->tempfile = $source["file"]["tmp_name"];
+      // Tiedoston tiedot
+      $this->filename = $source["file"]["name"];
+      $this->filetype = $source["file"]["type"];
+      $this->filesize = $source["file"]["size"];
 
-			// Kohdetiedosto: $targetfile
-			$this->targetfile = $this->upload_dir.$source["file"]["name"];
+      // Väliaikaistiedosto
+      $this->tempfile = $source["file"]["tmp_name"];
 
-			// Muutetaan kohdetiedostonimeä jos tiedosto on jo olemassa
-			$pathinfo = pathinfo($targetfile);
-			$plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
-			if(file_exists($this->targetfile)) { // Jos tämän niminen tiedosto on jo olemassa
-				$exists_number = 2;
-				do {
-					$this->targetfile = $pathinfo['dirname']."/".$plainname."-".$exists_number.".".$pathinfo['extension'];
-					$exists_number++;
-				} while(file_exists($this->targetfile));
-			}
+      // Kohdetiedosto: $targetfile
+      $this->targetfile = $this->upload_dir.$source["file"]["name"];
 
-			// Siirretään väliaikainen tiedosto lopulliseen paikkaan
-			// ja annetaan sille sopivat oikeudet.
-			if(@move_uploaded_file($source["file"]["tmp_name"], $this->targetfile))
-				if(@chmod($this->targetfile, 0644))
-					$this->is_success = TRUE;
+      // Muutetaan kohdetiedostonimeä jos tiedosto on jo olemassa
+      $pathinfo = pathinfo($targetfile);
+      $plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
+      if(file_exists($this->targetfile)) { // Jos tämän niminen tiedosto on jo olemassa
+        $exists_number = 2;
+        do {
+          $this->targetfile = $pathinfo['dirname']."/".$plainname."-".$exists_number.".".$pathinfo['extension'];
+          $exists_number++;
+        } while(file_exists($this->targetfile));
+      }
 
-			// Kirjoitetaan lokitiedot
-			$this->writeLog();
+      // Siirretään väliaikainen tiedosto lopulliseen paikkaan
+      // ja annetaan sille sopivat oikeudet.
+      if(@move_uploaded_file($source["file"]["tmp_name"], $this->targetfile))
+        if(@chmod($this->targetfile, 0644))
+          $this->is_success = TRUE;
 
-			// Jos kaikki on hyvin
-			return TRUE;
-		} 
+      // Kirjoitetaan lokitiedot
+      $this->writeLog();
 
-		// Jos homma kusee
-		return FALSE;
-	}
+      // Jos kaikki on hyvin
+      return TRUE;
+    }
 
-	// Luodaan hakemisto
-	public function createDir($directory) {
-		// Testataan onko hakemisto jo olemassa
-		if(is_dir($directory)) {
-			return true;
-		} else {
-			// Jos hakemisto ei ole olemassa luodaan se.
-			if(@mkdir($directory)) {
-				if(@chmod($directory, 0777)) {
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				return false;
-			}
-		}
-		return false;
-	}
+    // Jos homma kusee
+    return FALSE;
+  }
 
-	// Asetetaan logitiedosto
-	// Palauttaa true, jos tiedosto on olemassa
-	public function setLogfile($logfile_src) {
-		if(is_file($logfile_src)) {
-			$this->logfile = $logfile_src;
-			return true;
-		}
-		return false;
-	}
+  // Luodaan hakemisto
+  public function createDir($directory) {
+    // Testataan onko hakemisto jo olemassa
+    if(is_dir($directory)) {
+      return true;
+    } else {
+      // Jos hakemisto ei ole olemassa luodaan se.
+      if(@mkdir($directory)) {
+        if(@chmod($directory, 0777)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+    return false;
+  }
 
-	public function writeLog() {
+  // Asetetaan logitiedosto
+  // Palauttaa true, jos tiedosto on olemassa
+  public function setLogfile($logfile_src) {
+    if(is_file($logfile_src)) {
+      $this->logfile = $logfile_src;
+      return true;
+    }
+    return false;
+  }
 
-		if($this->logfile != "") {
-			// Kirjoitetaan uppaustiedot lokiin
-			$aika  = date("j.m-Y, H:i:s");
-			$tolog = ($aika." ||| ".$this->filename." ||| ".$this->targetfile." ||| ".$this->filesize."t ||| ".$this->filetype."\n");
-			$log   = @fopen($this->logfile, "a");
+  public function writeLog() {
 
-			@fwrite($log, $tolog);
-			@fclose($log);
-		}
-	}
+    if($this->logfile != "") {
+      // Kirjoitetaan uppaustiedot lokiin
+      $aika  = date("j.m-Y, H:i:s");
+      $tolog = ($aika." ||| ".$this->filename." ||| ".$this->targetfile." ||| ".$this->filesize."t ||| ".$this->filetype."\n");
+      $log   = @fopen($this->logfile, "a");
 
-	public function getMaxSize() {
-		return $this->MAX_UPLOAD_SIZE;
-	}
+      @fwrite($log, $tolog);
+      @fclose($log);
+    }
+  }
 
-	public function getUploaded() {
-		if($this->is_success) return $this->targetfile;
-		return "";
-	}
+  public function getMaxSize() {
+    return $this->MAX_UPLOAD_SIZE;
+  }
 
-	public function getOriginal() {
-		return $this->filename;
-	}
+  public function getUploaded() {
+    if($this->is_success) return $this->targetfile;
+    return "";
+  }
 
-	public function printUploadInfo() {
-		echo "Alkuperäinen tiedosto: ".$this->filename."<br/>\n";
-		echo "Väliaikainen tiedosto: ".$this->tempfile."<br/>\n";
-		echo "Tallennettu tiedosto:  ".$this->targetfile."<br/>\n";
-		echo "Tiedostotyyppi:        ".$this->filetype."<br/>\n";
-		echo "Tiedoston koko:        ".$this->filesize." tavua<br/>\n";
-	}
+  public function getOriginal() {
+    return $this->filename;
+  }
+
+  public function printUploadInfo() {
+    echo "Alkuperäinen tiedosto: ".$this->filename."<br/>\n";
+    echo "Väliaikainen tiedosto: ".$this->tempfile."<br/>\n";
+    echo "Tallennettu tiedosto:  ".$this->targetfile."<br/>\n";
+    echo "Tiedostotyyppi:        ".$this->filetype."<br/>\n";
+    echo "Tiedoston koko:        ".$this->filesize." tavua<br/>\n";
+  }
 
 }

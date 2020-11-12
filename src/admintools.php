@@ -4,20 +4,20 @@
 <?php
 if($LOGGED) {
 
-	echo "<h1>Hallinnointityökalut</h1>\n";
-	printSeparator();
+  echo "<h1>Hallinnointityökalut</h1>\n";
+  printSeparator();
 
-	echo "<div>\n";
-	echo "<a href='project.php'>\n";
-	echo "<img src='images/mainmenu/blog10-black.gif' alt='Projektiloki' />\n";
-	echo "</a>[<a href='project.php'>\n";
-	echo "Projektiloki</a>]\n";
-	echo "</div>\n";
+  echo "<div>\n";
+  echo "<a href='project.php'>\n";
+  echo "<img src='images/mainmenu/blog10-black.gif' alt='Projektiloki' />\n";
+  echo "</a>[<a href='project.php'>\n";
+  echo "Projektiloki</a>]\n";
+  echo "</div>\n";
 
-	printSeparator();
+  printSeparator();
 
 } else {
-	include("unauthorized.php");
+  include("unauthorized.php");
 }
 
 ?>

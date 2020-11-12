@@ -1,51 +1,51 @@
 /* Yläosio - Header */
 
 div.errorheader {
-	clear: both;
+  clear: both;
 }
 
 div.mainheader {
-	background-image: url("images/black16-topleft.png");
-	background-repeat: no-repeat;
-	background-position: top left;
-	margin: 0px;
-	padding: 0px;
-	background-color: black;
-	clear: both;
+  background-image: url("images/black16-topleft.png");
+  background-repeat: no-repeat;
+  background-position: top left;
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  clear: both;
 }
 div.banner {
-	margin: 0px;
-	padding: 10px;
-	background-image: url("images/black16-topright.png");
-	background-repeat: no-repeat;
-	background-position: top right;
+  margin: 0px;
+  padding: 10px;
+  background-image: url("images/black16-topright.png");
+  background-repeat: no-repeat;
+  background-position: top right;
 }
 
 div.bannerimageleft {
-	width: 50%;
-	height: 120px;
-	margin-bottom: -5px;
-	float: left;
-	background-image: url("images/korgtext10-b.png");
-	background-repeat: no-repeat;
-	background-position: left top;
+  width: 50%;
+  height: 120px;
+  margin-bottom: -5px;
+  float: left;
+  background-image: url("images/korgtext10-b.png");
+  background-repeat: no-repeat;
+  background-position: left top;
 }
 
 div.bannerimageright {
-	width: 49%;
-	height: 120px;
-	margin-bottom: -5px;
-	float: right;
-	background-repeat: no-repeat;
-	background-position: right top;
+  width: 49%;
+  height: 120px;
+  margin-bottom: -5px;
+  float: right;
+  background-repeat: no-repeat;
+  background-position: right top;
 }
 
 div.mainheader div.loader {
-	display: block;
-	margin-top: 64px;
-	padding-left: 20px;
+  display: block;
+  margin-top: 64px;
+  padding-left: 20px;
 }
 
 div.mainheader div.loader.ready {
-	display: none;
+  display: none;
 }

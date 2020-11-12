@@ -37,9 +37,9 @@ define("UPLOAD_DIRECTORY", "images/upload/");
 
 // Päivitetään kansion pids-tieto, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePids($fold_id, $pids, $con) {
-	$sql = "UPDATE korg_folds SET pids=\"".$pids."\" WHERE fold_id=".$fold_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_folds SET pids=\"".$pids."\" WHERE fold_id=".$fold_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ##########################################################
@@ -48,9 +48,9 @@ function updatePids($fold_id, $pids, $con) {
 
 // Päivitetään kansion pids-tieto, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePidsArray($fold_id, $pids_array, $con) {
-	$pids_string = pidsArrayToString($pids_array);
-	if (!updatePids($fold_id, $pids_string, $con)) return false;
-	return true;
+  $pids_string = pidsArrayToString($pids_array);
+  if (!updatePids($fold_id, $pids_string, $con)) return false;
+  return true;
 }
 
 ########################################################
@@ -59,9 +59,9 @@ function updatePidsArray($fold_id, $pids_array, $con) {
 
 // Päivitetään kansion nimi, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updateFolderName($fold_id, $newname, $con) {
-	$sql = "UPDATE korg_folds SET fold_name=\"".$newname."\" WHERE fold_id=".$fold_id;
-	if(korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_folds SET fold_name=\"".$newname."\" WHERE fold_id=".$fold_id;
+  if(korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ############################################
@@ -70,9 +70,9 @@ function updateFolderName($fold_id, $newname, $con) {
 
 // Päivitetään kuvan nimi, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureName($pic_id, $newname, $con) {
-	$sql = "UPDATE korg_pics SET pic_name=\"".$newname."\" WHERE pic_id=".$pic_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_name=\"".$newname."\" WHERE pic_id=".$pic_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ########################################################
@@ -81,9 +81,9 @@ function updatePictureName($pic_id, $newname, $con) {
 
 // Päivitetään kuvan tiedostohakemisto. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureSrc($pic_id, $newsrc, $con) {
-	$sql = "UPDATE korg_pics SET pic_src=\"".$newsrc."\" WHERE pic_id=".$pic_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_src=\"".$newsrc."\" WHERE pic_id=".$pic_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ############################################
@@ -94,9 +94,9 @@ function updatePictureSrc($pic_id, $newsrc, $con) {
 ############################################
 
 function updatePicturePaths($pic_id, $newsrc, $newthumb, $neworig, $con) {
-	$sql = "UPDATE korg_pics SET pic_src=\"".$newsrc."\", pic_thumb=\"".$newthumb."\", pic_orig=\"".$neworig."\"  WHERE pic_id=".$pic_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_src=\"".$newsrc."\", pic_thumb=\"".$newthumb."\", pic_orig=\"".$neworig."\"  WHERE pic_id=".$pic_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ###############################################################
@@ -105,9 +105,9 @@ function updatePicturePaths($pic_id, $newsrc, $newthumb, $neworig, $con) {
 
 // Päivitetään kuvan lisämateriaalihakemisto. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureLink($pic_id, $newlink, $con) {
-	$sql = "UPDATE korg_pics SET pic_link=\"".$newlink."\" WHERE pic_id=".$pic_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_link=\"".$newlink."\" WHERE pic_id=".$pic_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ################################################################
@@ -116,9 +116,9 @@ function updatePictureLink($pic_id, $newlink, $con) {
 ################################################################
 
 function updatePictureThumb($pic_id, $newthumb, $con) {
-	$sql = "UPDATE korg_pics SET pic_thumb=\"".$newthumb."\" WHERE pic_id=".$pic_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_thumb=\"".$newthumb."\" WHERE pic_id=".$pic_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 #####################################################
@@ -127,9 +127,9 @@ function updatePictureThumb($pic_id, $newthumb, $con) {
 
 // Päivitetään kuvateksti, jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updatePictureCaption($pic_id, $newcaption, $con) {
-	$sql = "UPDATE korg_pics SET pic_caption=\"".$newcaption."\" WHERE pic_id=".$pic_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_caption=\"".$newcaption."\" WHERE pic_id=".$pic_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ############################################################
@@ -138,9 +138,9 @@ function updatePictureCaption($pic_id, $newcaption, $con) {
 ############################################################
 
 function updatePictureFolder($pic_id, $newfolder, $con) {
-	$sql = "UPDATE korg_pics SET fold_id=".$newfolder." WHERE pic_id=".$pic_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET fold_id=".$newfolder." WHERE pic_id=".$pic_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ########################################################
@@ -150,9 +150,9 @@ function updatePictureFolder($pic_id, $newfolder, $con) {
 
 // Päivitetään muistiinpanon note_body. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updateNoteBody($note_id, $newbody, $con) {
-	$sql = "UPDATE korg_notes SET note_body=\"".$newbody."\",note_edited='".date("Y-m-d H:i:s")."' WHERE note_id=".$note_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_notes SET note_body=\"".$newbody."\",note_edited='".date("Y-m-d H:i:s")."' WHERE note_id=".$note_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 ####################################################################
@@ -161,12 +161,12 @@ function updateNoteBody($note_id, $newbody, $con) {
 
 // Päivitetään muistiinpanon note_marked. Jos päivitys epäonnistui funktio palauttaa FALSE muuten TRUE
 function updateNoteMarked($note_id, $marked, $con) {
-	$sql = "UPDATE korg_notes SET note_marked=";
-	if ($marked == '1') $sql .= "1";
-	else $sql .= "0";
-	$sql .= " WHERE note_id=".$note_id;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_notes SET note_marked=";
+  if ($marked == '1') $sql .= "1";
+  else $sql .= "0";
+  $sql .= " WHERE note_id=".$note_id;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 #######################################
@@ -175,9 +175,9 @@ function updateNoteMarked($note_id, $marked, $con) {
 
 // Poistetaan muistiinpano. Jos poisto epäonnistui funktio palauttaa FALSE muuten TRUE
 function deleteNote($note_id, $con) {
-	$sql = "DELETE FROM korg_notes WHERE note_id=".$note_id;
-	if (korg_delete($sql, $con) == 0) return false;
-	return true;
+  $sql = "DELETE FROM korg_notes WHERE note_id=".$note_id;
+  if (korg_delete($sql, $con) == 0) return false;
+  return true;
 }
 
 ###############################
@@ -186,16 +186,16 @@ function deleteNote($note_id, $con) {
 
 // Kertoo suomeksi mitä viimeisin virhekoodi tarkoittaa.
 function getError() {
-	$feedback = "";
-	switch($latest_error) {
-		case DEFAULT_VALUE: $feedback = ""; break; //"Virheitä ei tapahtunut.\n"; break;
-		case DIR_SUCCESS: $feedback = "Hakemiston luominen onnistui.\n"; break;
-		case DIR_EXISTS: $feedback = "Hakemisto on jo olemassa.\n"; break;
-		case DIR_CHMOD_ERROR: $feedback = "Hakemiston oikeuksien muutos epäonnistui. Hakemisto ei välttämättä toimi FTP-yhteydessä.\n"; break;
-		case DIR_CREATION_ERROR: $feedback = "Hakemiston luominen epäonnistui.\n"; break;
-		default: $feedback = "Unknown error.\n";
-	}
-	return $feedback."<br/>\n";
+  $feedback = "";
+  switch($latest_error) {
+    case DEFAULT_VALUE: $feedback = ""; break; //"Virheitä ei tapahtunut.\n"; break;
+    case DIR_SUCCESS: $feedback = "Hakemiston luominen onnistui.\n"; break;
+    case DIR_EXISTS: $feedback = "Hakemisto on jo olemassa.\n"; break;
+    case DIR_CHMOD_ERROR: $feedback = "Hakemiston oikeuksien muutos epäonnistui. Hakemisto ei välttämättä toimi FTP-yhteydessä.\n"; break;
+    case DIR_CREATION_ERROR: $feedback = "Hakemiston luominen epäonnistui.\n"; break;
+    default: $feedback = "Unknown error.\n";
+  }
+  return $feedback."<br/>\n";
 }
 
 ###################################
@@ -203,13 +203,13 @@ function getError() {
 ###################################
 
 function getUploadMessage() {
-	global $latest_upload_message;
-	return $latest_upload_message;
+  global $latest_upload_message;
+  return $latest_upload_message;
 }
 
 function setUploadMessage($newmessage) {
-	global $latest_upload_message;
-	$latest_upload_message = $newmessage;
+  global $latest_upload_message;
+  $latest_upload_message = $newmessage;
 }
 
 #########################################################################
@@ -218,29 +218,29 @@ function setUploadMessage($newmessage) {
 
 // Kansion lisäävä funktio. Jos lisäys onnistuu tai kansio olemassa, palauttaa TRUE muulloin FALSE
 function createImageFolder($fold_id) {
-	// Luotava hakemisto
-	$uusi = UPLOAD_DIRECTORY."fid".$fold_id;
+  // Luotava hakemisto
+  $uusi = UPLOAD_DIRECTORY."fid".$fold_id;
 
-	// Testataan onko hakemisto jo olemassa
-	if(is_dir($uusi)) {
-		$latest_error = DIR_EXISTS;
-		return true;
-	} else {
-		// Jos hakemisto ei ole olemassa luodaan se.
-		if(mkdir($uusi)) {
-			if(chmod($uusi, 0777)) {
-				$latest_error = DIR_SUCCESS;
-				return true;
-			} else {
-				$latest_error = DIR_CHMOD_ERROR;
-				return false;
-			}
-		} else {
-			$latest_error = DIR_CREATION_ERROR;
-			return false;
-		}
-	}
-	return false;
+  // Testataan onko hakemisto jo olemassa
+  if(is_dir($uusi)) {
+    $latest_error = DIR_EXISTS;
+    return true;
+  } else {
+    // Jos hakemisto ei ole olemassa luodaan se.
+    if(mkdir($uusi)) {
+      if(chmod($uusi, 0777)) {
+        $latest_error = DIR_SUCCESS;
+        return true;
+      } else {
+        $latest_error = DIR_CHMOD_ERROR;
+        return false;
+      }
+    } else {
+      $latest_error = DIR_CREATION_ERROR;
+      return false;
+    }
+  }
+  return false;
 }
 
 ############################
@@ -249,107 +249,107 @@ function createImageFolder($fold_id) {
 
 function uploadImage($files, $fold_id) {
 
-	// Ilmoitukset ladataan tähän
-	$upload_message = "";
+  // Ilmoitukset ladataan tähän
+  $upload_message = "";
 
-	// Lopullinen tiedostonimi hakemistoineen. Tämä arvo palautetaan
-	$newfilename = "";
+  // Lopullinen tiedostonimi hakemistoineen. Tämä arvo palautetaan
+  $newfilename = "";
 
-	// Minne kuvat kopioidaan
-	$hakemisto = UPLOAD_DIRECTORY."fid".$fold_id."/";
+  // Minne kuvat kopioidaan
+  $hakemisto = UPLOAD_DIRECTORY."fid".$fold_id."/";
 
-	if (isset($files)) {
-		if ($files["file"]["error"] > 0) {
-			$latest_upload_message .= "<h1>Lataus epäonnistui. ";
-			//Virhekoodit
-			switch($files["file"]["error"]) {
-				case 1:
-					$upload_message .= "Tiedostokoko ylittää php.ini-tiedostossa määritellyn koon.<br/>\n";
-					break;
-				case 2:
-					$upload_message .= "Tiedostokoko ylittää HTML-lomakkeessa määritellyn koon.<br/>\n";
-					break;
-				case 3:
-					$upload_message .= "Tiedoston siirto keskeytyi. Yritä <a href='picupload.php?fid=".$fold_id."'>uudelleen</a>.";
-					break;
-				case 4:
-					$upload_message .= "Tiedostoa ei annettu. Yritä <a href='picupload.php?fid=".$fold_id."'>uudelleen</a>.";
-					break;
-				case 6:
-					$upload_message .= "Väliaikaishakemistoa ei löydetty.<br/>\n";
-					break;
-				case 7:
-					$upload_message .= "Kohdehakemistoon ei voida kirjoittaa.<br/>\n";
-					break;
-				case 8:
-					$upload_message .= "File upload stopped by extension.<br/>\n";
-					break;
-				default:
-					$upload_message .= "Tunnistamaton virhe. Virhekoodi: ".$files["file"]["error"];
-			}
-			$upload_message .= "</h1>\n";
-		} else
-		if (($files["file"]["type"] == "image/gif") // Testataan kuvan tiedostotyyppi
-		|| ($files["file"]["type"] == "image/jpeg")
-		|| ($files["file"]["type"] == "image/png")
-		|| ($files["file"]["type"] == "image/pjpeg")) {
-			if ($files["file"]["size"] < MAX_FILE_SIZE) {
-				if ($files["file"]["error"] > 0) {
-					$upload_message .= "Return Code: " . $files["file"]["error"] . "<br />";
-				} else {
+  if (isset($files)) {
+    if ($files["file"]["error"] > 0) {
+      $latest_upload_message .= "<h1>Lataus epäonnistui. ";
+      //Virhekoodit
+      switch($files["file"]["error"]) {
+        case 1:
+          $upload_message .= "Tiedostokoko ylittää php.ini-tiedostossa määritellyn koon.<br/>\n";
+          break;
+        case 2:
+          $upload_message .= "Tiedostokoko ylittää HTML-lomakkeessa määritellyn koon.<br/>\n";
+          break;
+        case 3:
+          $upload_message .= "Tiedoston siirto keskeytyi. Yritä <a href='picupload.php?fid=".$fold_id."'>uudelleen</a>.";
+          break;
+        case 4:
+          $upload_message .= "Tiedostoa ei annettu. Yritä <a href='picupload.php?fid=".$fold_id."'>uudelleen</a>.";
+          break;
+        case 6:
+          $upload_message .= "Väliaikaishakemistoa ei löydetty.<br/>\n";
+          break;
+        case 7:
+          $upload_message .= "Kohdehakemistoon ei voida kirjoittaa.<br/>\n";
+          break;
+        case 8:
+          $upload_message .= "File upload stopped by extension.<br/>\n";
+          break;
+        default:
+          $upload_message .= "Tunnistamaton virhe. Virhekoodi: ".$files["file"]["error"];
+      }
+      $upload_message .= "</h1>\n";
+    } else
+    if (($files["file"]["type"] == "image/gif") // Testataan kuvan tiedostotyyppi
+    || ($files["file"]["type"] == "image/jpeg")
+    || ($files["file"]["type"] == "image/png")
+    || ($files["file"]["type"] == "image/pjpeg")) {
+      if ($files["file"]["size"] < MAX_FILE_SIZE) {
+        if ($files["file"]["error"] > 0) {
+          $upload_message .= "Return Code: " . $files["file"]["error"] . "<br />";
+        } else {
 
-					// Alkuperäinen nimi
-					$newfilename = $hakemisto . $files["file"]["name"];
+          // Alkuperäinen nimi
+          $newfilename = $hakemisto . $files["file"]["name"];
 
-					// Jos tiedosto löytyy jo hakemistosta, täytyy uusi tiedosto nimetä toisin
-					if (file_exists($newfilename)) {
-						$upload_message .= $files["file"]["name"] . " löytyy jo hakemistosta ".$hakemisto.". Vaihdetaan tiedoston nimeä.<br/>\n";
-						$acount = 2; // Ensimmäinen luku joka lisätään jos tiedosto löytyy jo hakemistosta
+          // Jos tiedosto löytyy jo hakemistosta, täytyy uusi tiedosto nimetä toisin
+          if (file_exists($newfilename)) {
+            $upload_message .= $files["file"]["name"] . " löytyy jo hakemistosta ".$hakemisto.". Vaihdetaan tiedoston nimeä.<br/>\n";
+            $acount = 2; // Ensimmäinen luku joka lisätään jos tiedosto löytyy jo hakemistosta
 
-						// Kaksi seuraavaa riviä suoritetaan loopin ulkopuolella, sillä
-						// muulloin tiedostot nimetään esim kiss-2-3-4.jpg
-						$pathinfo = pathinfo($newfilename);
-						$plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
-						do {
-							$newfilename = $hakemisto .$plainname."-".$acount.".".$pathinfo['extension'];
-							$acount++;
-						} while(file_exists($newfilename));
-					}
+            // Kaksi seuraavaa riviä suoritetaan loopin ulkopuolella, sillä
+            // muulloin tiedostot nimetään esim kiss-2-3-4.jpg
+            $pathinfo = pathinfo($newfilename);
+            $plainname = basename($pathinfo['basename'],".".$pathinfo['extension']);
+            do {
+              $newfilename = $hakemisto .$plainname."-".$acount.".".$pathinfo['extension'];
+              $acount++;
+            } while(file_exists($newfilename));
+          }
 
-					// Siirretään tiedosto väliaikaiskansiosta lopulliseen kansioon
-					move_uploaded_file($files["file"]["tmp_name"], $newfilename);
-					$upload_message .= "Tallenettu: " . $newfilename ."<br/>\n";
+          // Siirretään tiedosto väliaikaiskansiosta lopulliseen kansioon
+          move_uploaded_file($files["file"]["tmp_name"], $newfilename);
+          $upload_message .= "Tallenettu: " . $newfilename ."<br/>\n";
 
-					// Tulostetaan kuvatiedoston tiedot
-					$upload_message .= "Alkuperäinen: " . $files["file"]["name"] . "<br />";
-					$upload_message .= "Tyyppi: " . $files["file"]["type"] . "<br />";
-					$upload_message .= "Koko: " . ($files["file"]["size"] / 1024) . " Kb<br />";
-					$upload_message .= "Väliaikaistiedosto: " . $files["file"]["tmp_name"] . "<br />";
+          // Tulostetaan kuvatiedoston tiedot
+          $upload_message .= "Alkuperäinen: " . $files["file"]["name"] . "<br />";
+          $upload_message .= "Tyyppi: " . $files["file"]["type"] . "<br />";
+          $upload_message .= "Koko: " . ($files["file"]["size"] / 1024) . " Kb<br />";
+          $upload_message .= "Väliaikaistiedosto: " . $files["file"]["tmp_name"] . "<br />";
 
-					// Muutetaan tiedoston oikeudet siten että tiedosto näkyisi kaikille
-					if(chmod($newfilename, 0644))
-						$upload_message .= "Kuvatiedostolle oikeudet: 0644<br/>\n";
-					else
-						$upload_message .= "Oikeuksien muutos epäonnistui. Tiedosto ei välttämättä näy FTP-yhteydessä.<br/>\n";
+          // Muutetaan tiedoston oikeudet siten että tiedosto näkyisi kaikille
+          if(chmod($newfilename, 0644))
+            $upload_message .= "Kuvatiedostolle oikeudet: 0644<br/>\n";
+          else
+            $upload_message .= "Oikeuksien muutos epäonnistui. Tiedosto ei välttämättä näy FTP-yhteydessä.<br/>\n";
 
-					// Kirjoitetaan uppaustiedot lokiin
-					$aika  = date("j.m-Y, H:i:s");
-					$tolog = ($aika . " ||| " . $newfilename . " ||| " . $files["file"]["size"] . "t ||| " . $files["file"]["type"] . "\n");
-					$log   = @fopen(UPLOAD_DIRECTORY."uploadlog.txt", "a");
+          // Kirjoitetaan uppaustiedot lokiin
+          $aika  = date("j.m-Y, H:i:s");
+          $tolog = ($aika . " ||| " . $newfilename . " ||| " . $files["file"]["size"] . "t ||| " . $files["file"]["type"] . "\n");
+          $log   = @fopen(UPLOAD_DIRECTORY."uploadlog.txt", "a");
 
-					@fwrite($log, $tolog);
-					@fclose($log);
+          @fwrite($log, $tolog);
+          @fclose($log);
 
-				}
-			} else {
-				$upload_message .= "<h1>Tiedosto on liian suuri. Maksimikoko on ".MAX_FILE_SIZE." kt.</h1>\n";
-			}
-		} else $upload_message .= "<h1>Tiedostoa on väärää tiedostotyyppiä. Vain JPEG-, PNG- ja GIF-kuvat kelpaavat.</h1>\n";
-	} else $upload_message .= "<h1>Tiedostoa ei annettu. Lataus epäonnistui!</h1>\n";
+        }
+      } else {
+        $upload_message .= "<h1>Tiedosto on liian suuri. Maksimikoko on ".MAX_FILE_SIZE." kt.</h1>\n";
+      }
+    } else $upload_message .= "<h1>Tiedostoa on väärää tiedostotyyppiä. Vain JPEG-, PNG- ja GIF-kuvat kelpaavat.</h1>\n";
+  } else $upload_message .= "<h1>Tiedostoa ei annettu. Lataus epäonnistui!</h1>\n";
 
-	setUploadMessage($upload_message);
+  setUploadMessage($upload_message);
 
-	return $newfilename;
+  return $newfilename;
 }
 
 ###############################################
@@ -357,7 +357,7 @@ function uploadImage($files, $fold_id) {
 ###############################################
 
 function getUploadDir($fold_id) {
-	return UPLOAD_DIRECTORY."fid".$fold_id."/";
+  return UPLOAD_DIRECTORY."fid".$fold_id."/";
 }
 
 #####################################################################
@@ -366,15 +366,15 @@ function getUploadDir($fold_id) {
 
 // Haetaan tietokannassa olevien kuvien idt ja palautetaan ne jonona
 function getPictureIds($fold_id, $con) {
-	$sql = "SELECT pic_id FROM korg_pics WHERE fold_id=".$fold_id;
-	$rows = korg_get_rows($sql, $con);
-	$pictureids = array();
+  $sql = "SELECT pic_id FROM korg_pics WHERE fold_id=".$fold_id;
+  $rows = korg_get_rows($sql, $con);
+  $pictureids = array();
 
-	foreach ($rows as $row) {
-		array_push($pictureids, $row['pic_id']);
-	}
+  foreach ($rows as $row) {
+    array_push($pictureids, $row['pic_id']);
+  }
 
-	return $pictureids;
+  return $pictureids;
 }
 
 #######################################################################
@@ -384,23 +384,23 @@ function getPictureIds($fold_id, $con) {
 
 // Haetaan kansion tiedoissa olevat kuvaidt ja tallennetaan ne toiseen jonoon
 function getPidsArray($fold_id, $con) {
-	$sql = "SELECT pids FROM korg_folds WHERE fold_id=".$fold_id;
-	$row = korg_get_row($sql, $con);
-	$pids_raw = array();
-	$pids_final = array();
+  $sql = "SELECT pids FROM korg_folds WHERE fold_id=".$fold_id;
+  $row = korg_get_row($sql, $con);
+  $pids_raw = array();
+  $pids_final = array();
 
-	if (count($row) != 0) {
-		$pids_raw = explode(" ", trim($row['pids']));
+  if (count($row) != 0) {
+    $pids_raw = explode(" ", trim($row['pids']));
 
-		// Jos pids on tyhjä merkkijono niin jonoon tulee yksi alkio "".
-		// Poistetaan kaikki tyhjät alkiot ja sijoitetaan tulos muuttujaan $pids_fold_final
-		foreach ($pids_raw as $element) {
-			if ($element != "" && $element != " ")
-				array_push($pids_final, $element);
-		}
-	}
+    // Jos pids on tyhjä merkkijono niin jonoon tulee yksi alkio "".
+    // Poistetaan kaikki tyhjät alkiot ja sijoitetaan tulos muuttujaan $pids_fold_final
+    foreach ($pids_raw as $element) {
+      if ($element != "" && $element != " ")
+        array_push($pids_final, $element);
+    }
+  }
 
-	return $pids_final;
+  return $pids_final;
 }
 
 ######################################################################
@@ -408,14 +408,14 @@ function getPidsArray($fold_id, $con) {
 ######################################################################
 
 function pidsArrayToString($pids_array) {
-	$pids_string = "";
+  $pids_string = "";
 
-	foreach ($pids_array as $element) {
-		if ($element != "" && $element != " ")
-			$pids_string .= $element." ";
-	}
+  foreach ($pids_array as $element) {
+    if ($element != "" && $element != " ")
+      $pids_string .= $element." ";
+  }
 
-	return trim($pids_string);
+  return trim($pids_string);
 }
 
 ######################################################
@@ -426,41 +426,41 @@ function pidsArrayToString($pids_array) {
 // Returns true if removed successfully or not found, false in other cases
 function removeResource( $_target ) {
 
-	//file?
-	if( is_file($_target) ) {
-		if( is_writable($_target) ) {
-		    if( @unlink($_target) ) {
-		        return true;
-		    }
-		}
-		return false;
-	}
+  //file?
+  if( is_file($_target) ) {
+    if( is_writable($_target) ) {
+        if( @unlink($_target) ) {
+            return true;
+        }
+    }
+    return false;
+  }
 
-	//dir?
-	if( is_dir($_target) ) {
-		if( is_writeable($_target) ) {
-		    foreach( new DirectoryIterator($_target) as $_res ) {
-		        if( $_res->isDot() ) {
-		            unset($_res);
-		            continue;
-		        }
+  //dir?
+  if( is_dir($_target) ) {
+    if( is_writeable($_target) ) {
+        foreach( new DirectoryIterator($_target) as $_res ) {
+            if( $_res->isDot() ) {
+                unset($_res);
+                continue;
+            }
 
-		        if( $_res->isFile() ) {
-		            removeResource( $_res->getPathName() );
-		        } elseif( $_res->isDir() ) {
-		            removeResource( $_res->getRealPath() );
-		        }
-		        unset($_res);
-		    }
+            if( $_res->isFile() ) {
+                removeResource( $_res->getPathName() );
+            } elseif( $_res->isDir() ) {
+                removeResource( $_res->getRealPath() );
+            }
+            unset($_res);
+        }
 
-		    if( @rmdir($_target) ) {
-		        return true;
-		    }
-		}
-		return false;
-	}
+        if( @rmdir($_target) ) {
+            return true;
+        }
+    }
+    return false;
+  }
 
-	return true;
+  return true;
 }
 
 ##################################################
@@ -468,24 +468,24 @@ function removeResource( $_target ) {
 ##################################################
 
 function removeFromFolder($fold_id, $pic_id, $con) {
-	// Haetaan kansion pids-kenttä
-	// Rikotaan pids-kenttä jonoksi
+  // Haetaan kansion pids-kenttä
+  // Rikotaan pids-kenttä jonoksi
 
-	$pids_array = getPidsArray($fold_id, $con);
-	$pids_array_new = array();
+  $pids_array = getPidsArray($fold_id, $con);
+  $pids_array_new = array();
 
-	// Poistetaan jonosta se alkio joka == $pic_id
-	foreach ($pids_array as $element) {
-		if ($element != $pic_id) array_push($pids_array_new, $element);
-	}
+  // Poistetaan jonosta se alkio joka == $pic_id
+  foreach ($pids_array as $element) {
+    if ($element != $pic_id) array_push($pids_array_new, $element);
+  }
 
-	// Kootaan jonosta taas string
-	$pids_string = pidsArrayToString($pids_array_new);
+  // Kootaan jonosta taas string
+  $pids_string = pidsArrayToString($pids_array_new);
 
-	// Talletetaan saatu string kansion pids-kentän päälle
-	if (updatePids($fold_id, $pids_string, $con)) return true;
+  // Talletetaan saatu string kansion pids-kentän päälle
+  if (updatePids($fold_id, $pids_string, $con)) return true;
 
-	return false;
+  return false;
 }
 
 #######################################
@@ -494,27 +494,27 @@ function removeFromFolder($fold_id, $pic_id, $con) {
 
 function addToFolder($fold_id, $pic_id, $con) {
 
-	// Poistetaan uudesta kansiosta mahdollinen samalla
-	// pic_id-numerolla varustettu kuva
-	removeFromFolder($fold_id, $pic_id, $con);
+  // Poistetaan uudesta kansiosta mahdollinen samalla
+  // pic_id-numerolla varustettu kuva
+  removeFromFolder($fold_id, $pic_id, $con);
 
-	// Vanhat pids-numerot
-	$oldpids = getFolderPids($fold_id, $con);
+  // Vanhat pids-numerot
+  $oldpids = getFolderPids($fold_id, $con);
 
-	// Uudet pids-numerot
-	$newpids = "";
+  // Uudet pids-numerot
+  $newpids = "";
 
-	// Muodostetaan uusi pids-arvo
-	if (strlen($oldpids) < 1) {// jos tyhjä
-		$newpids = $pic_id;
+  // Muodostetaan uusi pids-arvo
+  if (strlen($oldpids) < 1) {// jos tyhjä
+    $newpids = $pic_id;
   } else {
-		$newpids = $oldpids." ".$pic_id;
+    $newpids = $oldpids." ".$pic_id;
   }
 
-	// Päivitetään pids-arvo
-	if (updatePids($fold_id, $newpids, $con)) return true;
+  // Päivitetään pids-arvo
+  if (updatePids($fold_id, $newpids, $con)) return true;
 
-	return false;
+  return false;
 }
 
 ##################################################
@@ -522,17 +522,17 @@ function addToFolder($fold_id, $pic_id, $con) {
 ##################################################
 
 function moveImageUp($fold_id, $pic_index, $con) {
-	$pids_array = getPidsArray($fold_id, $con);
-	$array_lenght = count($pids_array);
+  $pids_array = getPidsArray($fold_id, $con);
+  $array_lenght = count($pids_array);
 
-	if ($pic_index != 0 && $pic_index < $array_lenght) {
-		$buffer_array = array_splice($pids_array, $pic_index, 1);
-		array_splice($pids_array, $pic_index-1, 0, $buffer_array);
+  if ($pic_index != 0 && $pic_index < $array_lenght) {
+    $buffer_array = array_splice($pids_array, $pic_index, 1);
+    array_splice($pids_array, $pic_index-1, 0, $buffer_array);
 
-		if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
-	}
+    if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
+  }
 
-	return true;
+  return true;
 }
 
 ##################################################
@@ -540,17 +540,17 @@ function moveImageUp($fold_id, $pic_index, $con) {
 ##################################################
 
 function moveImageDown($fold_id, $pic_index, $con) {
-	$pids_array = getPidsArray($fold_id, $con);
-	$array_lenght = count($pids_array);
+  $pids_array = getPidsArray($fold_id, $con);
+  $array_lenght = count($pids_array);
 
-	if (($pic_index + 1) > 0 && ($pic_index + 1) < $array_lenght) {
-		$buffer_array = array_splice($pids_array, $pic_index, 1);
-		array_splice($pids_array, $pic_index+1, 0, $buffer_array);
+  if (($pic_index + 1) > 0 && ($pic_index + 1) < $array_lenght) {
+    $buffer_array = array_splice($pids_array, $pic_index, 1);
+    array_splice($pids_array, $pic_index+1, 0, $buffer_array);
 
-		if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
-	}
+    if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
+  }
 
-	return true;
+  return true;
 }
 
 ################################
@@ -558,20 +558,20 @@ function moveImageDown($fold_id, $pic_index, $con) {
 ################################
 
 function movePictureTop($fold_id, $pic_id, $con) {
-	$pids_array = getPidsArray($fold_id, $con);
-	$array_lenght = count($pids_array);
+  $pids_array = getPidsArray($fold_id, $con);
+  $array_lenght = count($pids_array);
 
-	$pic_index = array_search($pic_id,$pids_array);
+  $pic_index = array_search($pic_id,$pids_array);
 
-	if ($pic_index >= 0 && $pic_index < $array_lenght) {
-		//$buffer_array sisältää yhden alkion eli siirrettävän numeron
-		$buffer_array = array_splice($pids_array, $pic_index, 1);
-		array_splice($pids_array, 0, 0, $buffer_array);
+  if ($pic_index >= 0 && $pic_index < $array_lenght) {
+    //$buffer_array sisältää yhden alkion eli siirrettävän numeron
+    $buffer_array = array_splice($pids_array, $pic_index, 1);
+    array_splice($pids_array, 0, 0, $buffer_array);
 
-		if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
-	}
+    if (!updatePidsArray($fold_id, $pids_array, $con)) return false;
+  }
 
-	return true;
+  return true;
 }
 
 #####################################################################################
@@ -579,9 +579,9 @@ function movePictureTop($fold_id, $pic_id, $con) {
 #####################################################################################
 
 function hideImage($pic_index, $con) {
-	$sql = "UPDATE korg_pics SET pic_hidden=1 WHERE pic_id=".$pic_index;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_hidden=1 WHERE pic_id=".$pic_index;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 #############################################################################
@@ -589,9 +589,9 @@ function hideImage($pic_index, $con) {
 #############################################################################
 
 function unhideImage($pic_index, $con) {
-	$sql = "UPDATE korg_pics SET pic_hidden=0 WHERE pic_id=".$pic_index;
-	if (korg_update($sql, $con) == 0) return false;
-	return true;
+  $sql = "UPDATE korg_pics SET pic_hidden=0 WHERE pic_id=".$pic_index;
+  if (korg_update($sql, $con) == 0) return false;
+  return true;
 }
 
 #################################################################################
@@ -599,16 +599,16 @@ function unhideImage($pic_index, $con) {
 #################################################################################
 
 function setHideFolder($fold_id, $hiding, $con) {
-	if ($hiding == "0") {
-		// Päivitetään samalla kansion julkaisuaika ja sivuston päivitysaika
-		$sql = "UPDATE korg_folds SET fold_hidden=0,fold_issued='".date("Y-m-d H:i:s")."' WHERE fold_id=".$fold_id."; ";
-		if (korg_update($sql, $con) == 0) return false;
+  if ($hiding == "0") {
+    // Päivitetään samalla kansion julkaisuaika ja sivuston päivitysaika
+    $sql = "UPDATE korg_folds SET fold_hidden=0,fold_issued='".date("Y-m-d H:i:s")."' WHERE fold_id=".$fold_id."; ";
+    if (korg_update($sql, $con) == 0) return false;
 
-		$sql = "UPDATE korg_site SET site_update='".date("Y-m-d H:i:s")."' WHERE site_id=1;";
-		korg_update($sql, $con);
+    $sql = "UPDATE korg_site SET site_update='".date("Y-m-d H:i:s")."' WHERE site_id=1;";
+    korg_update($sql, $con);
 
-		return true;
-	} else {
+    return true;
+  } else {
     if ($hiding == "1") {
       $sql = "UPDATE korg_folds SET fold_hidden=1 WHERE fold_id=".$fold_id;
       if (korg_update($sql, $con) == 0) {
@@ -619,7 +619,7 @@ function setHideFolder($fold_id, $hiding, $con) {
     }
   }
 
-	return false;
+  return false;
 }
 
 ############################################################################
@@ -627,12 +627,12 @@ function setHideFolder($fold_id, $hiding, $con) {
 ############################################################################
 
 function setSystemFolder($fold_id, $makesys, $con) {
-	if ($makesys == "0") {
-		$sql = "UPDATE korg_folds SET fold_system=0 WHERE fold_id=".$fold_id;
-		if (korg_update($sql, $con) == 0) return false;
+  if ($makesys == "0") {
+    $sql = "UPDATE korg_folds SET fold_system=0 WHERE fold_id=".$fold_id;
+    if (korg_update($sql, $con) == 0) return false;
 
-		return true;
-	} else {
+    return true;
+  } else {
     if ($makesys == "1") {
       $sql = "UPDATE korg_folds SET fold_system=1 WHERE fold_id=".$fold_id;
       if (korg_update($sql, $con) == 0) {
@@ -643,5 +643,5 @@ function setSystemFolder($fold_id, $makesys, $con) {
     }
   }
 
-	return false;
+  return false;
 }

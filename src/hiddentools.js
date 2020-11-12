@@ -6,14 +6,14 @@
 
 // Lisätyökalujen näyttäminen
 function showHiddentools() {
-	document.getElementById("hiddentools").style.display="block";
-	document.getElementById("showhidebutton").src="images/less00.gif";
-	document.getElementById("showhidebutton").onclick = hideHiddentools;
+  document.getElementById("hiddentools").style.display="block";
+  document.getElementById("showhidebutton").src="images/less00.gif";
+  document.getElementById("showhidebutton").onclick = hideHiddentools;
 }
 
 // Lisätyökalujen piilottaminen
 function hideHiddentools() {
-	document.getElementById("hiddentools").style.display="none";
-	document.getElementById("showhidebutton").src="images/more00.gif";
-	document.getElementById("showhidebutton").onclick = showHiddentools;
+  document.getElementById("hiddentools").style.display="none";
+  document.getElementById("showhidebutton").src="images/more00.gif";
+  document.getElementById("showhidebutton").onclick = showHiddentools;
 }

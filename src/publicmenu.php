@@ -6,7 +6,7 @@
 <a class="mainmenuitem net" href="/links.php"><span>LINKIT</span></a>
 
 <div class="latestupdate">Viimeisin päivitys:
-<?php 
-	echo getCleanDate(getSiteUpdate(1,$con)); // 1 on kohteet.org sivuston site_id
+<?php
+  echo getCleanDate(getSiteUpdate(1,$con)); // 1 on kohteet.org sivuston site_id
 ?>
 </div>
