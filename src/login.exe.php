@@ -10,7 +10,7 @@
 
   $alphabet = "abcdefghijklmnopqrstuvxyzåäöABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ-_^1234567890";
 
-  if ($_SESSION['fails'] < 5) {
+  if (!isset($_SESSION['fails']) || $_SESSION['fails'] < 5) {
 
     if (strspn($_POST['username'], $alphabet) == strlen($_POST['username'])) {
       if (strspn($_POST['password'], $alphabet) == strlen($_POST['password'])) {
