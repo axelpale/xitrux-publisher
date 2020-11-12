@@ -19,7 +19,7 @@ if ($LOGGED) {
     $_SESSION['fails'] = 1;
   }
 
-  // Nukutaan aika joka riippuu exponentiaalisesti epäonnistuneiden kirjautumiskertojen lukumäärästä
+  // Nukutaan aika joka riippuu epäonnistuneiden kirjautumiskertojen määrästä
   // Tämä siis ainoastaan virheellisen kirjautumisen yhteydessä
   sleep(8 * $_SESSION['fails']);
 
