@@ -1,0 +1,119 @@
+div.mainmenu {
+	margin: 0px;
+	padding: 0px;
+	padding-left: 10px;
+	background-color: black;
+	clear: both;
+}
+
+div.mainmenu.filler {
+	background-image: url("images/filler01a.png");
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+
+a.mainmenuitem {
+	display: block;
+	margin: 0px;
+	margin-top: 14px;
+	margin-bottom: 10px;
+	padding: 0px;
+	width: 107px;
+	float: left;
+	background-color: black;
+	border: 2px dotted black;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+}
+a.mainmenuitem:hover {
+	color: black;
+	background-color: white;
+}
+a.mainmenuitem.user {
+	width: 100px;
+}
+
+div.mainmenu .home {
+	background-image: url("images/mainmenu/home01-black.gif");
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+div.mainmenu .home:hover {
+	background-image: url("images/mainmenu/home01-white.gif");
+}
+div.mainmenu .pics {
+	background-image: url("images/mainmenu/pics00-black.gif");
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+div.mainmenu .pics:hover {
+	background-image: url("images/mainmenu/pics00-white.gif");
+}
+div.mainmenu .site {
+	background-image: url("images/mainmenu/korg00-black.gif");
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+div.mainmenu .site:hover {
+	background-image: url("images/mainmenu/korg00-white.gif");
+}
+div.mainmenu .net {
+	background-image: url("images/mainmenu/irc01-black.gif");
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+div.mainmenu .net:hover {
+	background-image: url("images/mainmenu/irc01-white.gif");
+}
+
+div.mainmenu .admin {
+	background-image: url("images/mainmenu/piced00-black.gif");
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+div.mainmenu .admin:hover {
+	background-image: url("images/mainmenu/piced00-white.gif");
+}
+div.mainmenu .blog {
+	background-image: url("images/mainmenu/blog10-black.gif");
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+div.mainmenu .blog:hover {
+	background-image: url("images/mainmenu/blog10-white.gif");
+}
+div.mainmenu .logout {
+	background-image: url("images/mainmenu/logout00-black.gif");
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+div.mainmenu .logout:hover {
+	background-image: url("images/mainmenu/logout00-white.gif");
+}
+
+a.mainmenuitem span {
+	display: block;
+	margin: 66px auto 0 auto;
+}
+
+div.mainmenuseparator {
+	margin: 0px;
+	margin-top: 17px;
+	width: 0px;
+	height: 70px;
+	background-color: black;
+	border-left: 2px dotted white;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: left;
+}
+
+div.mainmenu div.latestupdate {
+	color: white;
+	float: right;
+	margin-top: 87px;
+	margin-right: 10px;
+	margin-bottom: -10px;
+}

@@ -1,0 +1,368 @@
+div.mainbody {
+	margin: 0px;
+	padding: 20px 20px 20px 20px;
+	clear: both;
+	background-color: white;
+	border-left: 2px dotted black;
+	border-right: 2px dotted black;
+
+}
+
+/* PERUSELEMENTIT */
+
+div.mainbody h1 {
+	color: black;
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+div.mainbody h2 {
+	color: black;
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+div.mainbody h3 {
+	color: black;
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+div.mainbody p {
+	display: block;
+	width: 640px;
+	font-family: courier, times;
+	font-size: 1.1em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.mainbody a {
+	color: #ff8000;
+	text-decoration: none;
+}
+div.mainbody a:link { color: #ff8000; }
+div.mainbody a:visited { color: #ff8000 }
+div.mainbody a:hover { color: #DDDDDD; }
+div.mainbody a:active { color: #CCCCCC; }
+
+/* SEKALAISIA */
+
+div.mainbody .right {
+	text-align: right;
+}
+
+div.mainbody .left {
+	text-align: left;
+}
+
+div.mainbody .indent {
+	margin-left: 20px;
+}
+
+div.mainbody .over {
+	text-decoration: line-through;
+}
+
+.stopfloat {
+	clear: left;
+	font-size: 0px;
+	height: 0px;
+	line-height: 0px;
+}
+
+div.erottaja {
+	background-color: black;
+	height: 0px;
+	line-height: 0px;
+	font-size: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-top: 2px solid black;
+}
+
+/* TÄYSKUVASELAIN */
+
+div.picbrowser {
+}
+
+div.picbrowser div.heading {
+	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+}
+div.picbrowser div.heading div.leftside {
+	width: 450px;	
+	text-align: left;
+	float: left;
+}
+div.picbrowser div.heading div.leftside h1 {	
+	margin: 0px;
+	display: inline;
+}
+div.picbrowser div.heading div.rightside {
+	width: 190px;
+	text-align: right;
+	float: right;
+}
+
+div.picbrowser div.heading div.issued {
+	margin-top: 7px;
+	float: right;
+	color: #804000;
+	font-weight: bold;
+}
+div.picbrowser div.heading div.button {
+	float: right;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+div.picbrowser div.heading div.button:hover {
+	opacity:0.4;
+	/*filter:alpha(opacity=40);*/
+}
+
+div.picbrowser div.heading div.button.prev {
+	background-image: url("images/left01.gif");
+}
+
+div.picbrowser div.heading div.button.next {
+	background-image: url("images/right00.gif");
+}
+
+div.picbrowser div.heading div.button.first {
+	background-image: url("images/movetop01.gif");
+}
+
+div.picbrowser div.heading div.button.last {
+	background-image: url("images/movetop02.gif");
+}
+
+div.picbrowser div.heading div.button.zoom {
+	background-image: url("images/zoom01.png");
+}
+
+div.picbrowser div.picture {
+	width: 640px;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.picbrowser img {
+	max-width: 640px;
+	max-height: 560px;
+	display: block;
+	border: 0px solid black;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.picbrowser div.tags {
+	margin-bottom: 10px;
+}
+div.picbrowser div.tags a {
+	font-weight: bold;
+}
+
+div.picbrowser div.caption {
+	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	text-align: left;
+}
+
+div.picbrowser div.caption h2 {
+	margin-bottom: 5px;
+}
+
+/* KUVAEDITORI */
+
+div#hiddeninfo {
+	display: none;
+}
+
+div#hiddeninfo table {
+	border-collapse: collapse;
+}
+
+div#hiddeninfo table td {
+	border: 1px solid black;
+}
+
+div#hiddeninfo div.caption {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+/* KUVAKESELAIN - THUMBBROWSER */
+
+div.itembrowser {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.itembrowser.public {
+	width: 640px;
+}
+
+div.browseritem {
+	float: left;
+	width: 242px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+div.browseritem.public {
+	width: 640px;
+	text-align: left;
+	clear: left;
+}
+
+div.browseritem.public.marked {
+	background-image: url("images/notemarker00.png");
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+}
+
+div.browseritem.index {
+	color: red;
+}
+
+div.browseritem a {
+	text-decoration: none;
+}
+
+
+div.browseritem h2 {
+	margin-bottom: 0px;
+}
+
+div.browseritem div.issued {
+	color: #804000;
+	margin-bottom: 10px;
+}
+
+div.browseritem img {
+	max-width: 200px;
+	max-height: 200px;
+	margin: 4px;
+	border: 0px solid black;
+}
+
+div.browseritem.public a.thumb {
+	display: block;
+	float: left;
+	width: 200px;
+	margin-right: 10px;
+	text-align: right;
+}
+
+div.browseritem.public img {
+	margin: 0px;
+}
+
+div.browseritem img.indeximage {
+	border: 4px groove red;
+	margin: 0px;
+}
+
+div.browseritem img.hiddenimage {
+	border: 1px dotted red;
+	margin: 3px;
+	opacity:0.4;
+	/*filter:alpha(opacity=40);*/
+}
+
+div.browseritem div.tools img {
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+}
+
+div.browseritem div.tools img:hover {
+	opacity:0.4;
+	/*filter:alpha(opacity=40);*/
+}
+
+div.count {
+	margin-top: 10px;
+}
+
+/* KUVATIETOEDITORI */
+
+input.textfield {
+	width: 23em
+}
+
+/* TAGIEDITORI - LUOKITTELUEDITORI */
+
+h2.tags a {	color: red; font-size: small; cursor: pointer; }
+h2.tags a:link { color: red; }
+h2.tags a:visited { color: red; }
+h2.tags a:hover { color: #DDDDDD; }
+h2.tags a:active { color: #CCCCCC; }
+
+/* LINKKIRIVI */
+
+div.linkrow {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;	
+}
+div.linkrow.top {
+	border-top: 0px solid black;
+	padding-top: 0px;
+}
+div.linkrow.bottom {
+	border-bottom: 0px solid black;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	padding-bottom: 0px;
+}
+div.linkrow.none {
+	border-top: 0px solid black;
+	border-bottom: 0px solid black;
+}
+div.linkrow div.hiddentools {
+	display: none;
+}
+div.linkrow div.showhide {
+	height: 5px;
+	margin-top: -5px;
+	margin-bottom: 0px;
+	text-align: right;
+}
+div.linkrow div.showhide img:hover {
+	cursor: pointer;
+	opacity:0.4;
+	/*filter:alpha(opacity=40);*/
+}
+div.linkrow a {
+	color: #ff8000;
+	text-decoration: none;
+	cursor: pointer;
+}
+div.linkrow a:link { color: #ff8000; }
+div.linkrow a:visited { color: #ff8000; }
+div.linkrow a:hover { color: #DDDDDD; }
+div.linkrow a:active { color: #CCCCCC; }

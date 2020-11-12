@@ -1,0 +1,28 @@
+/* Rakenne - Structure */
+
+body {
+	padding: 0px;
+	background-color: white;
+	color: black;
+	font-family: tahoma, sans-serif;
+	font-size: 14px;
+	/*background-image: url("images/stripes.gif");
+	background-repeat: repeat;*/
+}
+
+div.supcontainer {
+	width: 770px;
+	/*min-width: 770px;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 80px;
+	clear: both;
+}
+
+div.container {
+	margin: 0px;
+	padding: 0px;
+	background-color: black;
+	clear: both;
+}

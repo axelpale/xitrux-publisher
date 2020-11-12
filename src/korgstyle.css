@@ -1,0 +1,242 @@
+/* Tähän tulee korgin värikartta */
+/* Pitää tutkia voidaanko omia väriavainsanoja luoda */
+
+/*
+COLORS:
+elsa-blue: #293896
+orange
+orange: #F26522
+orange(ligher): #F48744
+light-cyan: #D0F7FF
+light-yellow: #FFFAC5
+*/
+
+/* PÄÄRAKENNE - MAINSTRUCTURE */
+
+table.maintable {
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  width: 780px;
+  /*border: 2px solid #293896;*/
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+td.headercell {
+	background-color: black;
+	margin: 0px;
+	text-align: center;
+  /*background-image: url('images/header_back2_64.gif');*/
+  /*background-image: url('images/footer_back_16b.gif');*/
+  /*background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: bottom left;*/
+}
+
+td.mainmenucell {
+	background-color: black;
+	margin: 0px;
+	color: white;
+	text-align: center;
+}
+
+td.usermenucell {
+	background-color: black;
+	margin: 0px;
+	color: white;
+	text-align: center;
+}
+
+td.bodycell {
+	margin: 0px;
+	border-left: 2px dotted black;
+	border-right: 2px dotted black;
+	background-color: white;
+	/*background-image: url('images/right_soft.gif');
+	background-repeat: repeat-y;
+	background-attachment: scroll;
+	background-position: right;*/
+	padding-left: 20px; /*Ruudun sisennys*/
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	overflow: auto;
+}
+
+/* Alapalkki */
+td.footercell1 {
+  /*border: 2px solid #293896;*/
+  background-color: black;
+  color: #FFFFFF;
+  font-size: 10px;
+  /*background-image: url('images/footer_back_16b.gif');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: top left;*/
+}
+
+/* Tekijätiedot */
+td.footercell2 {
+  /*border: 0px solid #293896;*/
+  text-align: center;
+  font-size: 10px;
+  background-color: transparent;
+}
+
+/* MAIN MENU */
+
+table.mainmenutable { /*USED*/
+	table-layout: fixed;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	width: 760px;
+  /*border: 2px solid #293896;*/
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+td.menucell { /*USED*/
+	background-color: black;
+}
+
+
+/* LINKIT - LINKS */
+
+a.menulink { /*USED*/
+	display: block;
+	text-decoration: none;
+	color: white;	
+	border: 2px solid black;
+	font-weight: bold;
+}
+a.menulink:link { color: white; background-color: black; }
+a.menulink:visited{ color: white; background-color: black; }
+a.menulink:hover { color: black; background-color: white; border: 2px dotted black; }
+a.menulink:active { color: black; background-color: black; }
+
+a.valikkolinkki {
+  display: block;
+  text-align: left;
+  text-indent: 16px;
+  font-size: 18px;
+  background-color: transparent;
+  color: #FFFFFF;
+  clear: both;
+  text-decoration: none;
+  position: relative;
+  left: 0px;
+  top: -1px;
+  width: 202px;
+}
+
+
+a.valikkolinkki2 {
+  display: block;
+  text-align: left;
+  text-indent: 34px;
+  font-size: 12px;
+  background-color: #293896;
+  color: #FFFFCC;
+  clear: both;
+  text-decoration: none;
+  position: relative;
+  left: 0px;
+  top: -1px;
+  width: 202px;
+}
+
+a.valikkolinkki2:link { color: #FFFFFF; background-color: transparent; }
+a.valikkolinkki2:visited{ color: #EEEEEE; background-color: transparent; }
+a.valikkolinkki2:hover {
+	color: #DDDDDD;
+	/*background-color: #D0F7FF;*/
+	color: #F26522;
+	font-weight: bold;
+	left: -1px;
+	background-image: url('images/link_bg_2.png');
+	background-repeat: repeat-y;
+	background-attachment: scroll;
+	background-position: center;
+}
+a.valikkolinkki2:active { color: #CCCCCC; background-color: transparent; }
+
+/* OTSIKOT */
+
+h2.up { 
+	margin-top: 0px;
+	margin-bottom: 14px;
+}
+
+/* Tables */
+
+table {
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+table.uutinen {
+	table-layout: fixed;
+	border-collapse: collapse;
+	margin-left: 20px;
+	/* border: 2px solid #DDD8A3; */
+	background-color: #FFFDDC;
+}
+
+table.kayttaja {
+	table-layout: fixed;
+	border-collapse: collapse;
+	margin-left: 20px;
+	/* border: 2px solid #DDD8A3; */
+	background-color: #FFFDDC;
+}
+
+div.construct {
+	color: #FFFFFF;
+	font-size: 20px;
+	text-align: center;
+	width: 200px;
+	height: 30px;
+	background-color: #000000;
+	border: 2px solid #00FFFF;
+}
+
+.newshead {
+	font-weight: bold;
+	font-size: 18px;
+	padding-bottom: 18px;
+}
+
+.newsbody {
+	font-family: "times new roman", sans-serif;
+}
+
+p.infocard {
+	color: #F26522;
+	font-weight: bold;
+}
+
+p > span:first-child {
+	font-weight: bold;
+	font-family: "times new roman", sans-serif;
+}
+
+/* YLEINEN MUOTOILU */
+
+.under { text-decoration: underline; } /*USED*/
+
+.error { font-weight: bold; color: red; } /*USED Käytetään virheilmoitusten tehosteena*/
+
+/* KUVAT */
+
+img.at{
+	vertical-align: middle;
+}
+
+img.button {
+	border: 0px solid #FFFFFF;
+	vertical-align: bottom;
+	margin-right: 4px;
+}
