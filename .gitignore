@@ -18,7 +18,8 @@
 ################################################
 
 /src/config.php
-
+/src/images/upload/**/*
+!/src/images/upload/.gitkeep
 
 ################################################
 # Miscellaneous
