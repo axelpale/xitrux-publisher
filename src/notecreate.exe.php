@@ -26,7 +26,7 @@
     $sql = "INSERT INTO korg_notes(note_id,note_body,note_created,note_edited) VALUES(";
     $sql = $sql."DEFAULT,'".$_POST['newnotebody']."','".date("Y-m-d H:i:s")."','".date("Y-m-d H:i:s")."')";
 
-    $rowsInserted = korg_insert($sql, $con)
+    $rowsInserted = korg_insert($sql, $con);
     if ($rowsInserted == 0) {
       die("Virhe! Uutta muistiinpanoa ei voitu luoda.");
     }
