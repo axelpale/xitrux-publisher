@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if ($_SESSION['logged'] == "logged") {
+if ($_SESSION['logged']) {
 
   // Tarkistetaan GET['fid'] tietoturvan vuoksi
   $fid = sanitizeId($_GET['fid']);

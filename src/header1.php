@@ -10,18 +10,20 @@
 
   // Käyttäjän statuksen tarkastaminen
   $LOGGED = false;
-  if ($_SESSION['logged'] == "logged") $LOGGED = true;
+  if ($_SESSION['logged']) {
+    $LOGGED = true;
+  }
 
   // Kävijälaskuri
-  if ( ENABLE_VISITOR_COUNTER ) {
-    if ( !isset($_SESSION['oldvisitor']) ) {
+  if (ENABLE_VISITOR_COUNTER) {
+    if (!isset($_SESSION['oldvisitor'])) {
       $_SESSION['oldvisitor'] = 1;
       addVisitor(1,$con);
     }
   }
 
   // Page load counter, sivujen latausmäärän laskuri
-  if ( ENABLE_PAGELOAD_COUNTER ) {
+  if (ENABLE_PAGELOAD_COUNTER) {
     addPageload(1,$con);
   }
 ?>

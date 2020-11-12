@@ -25,7 +25,7 @@
         if ($row !== false) {
           $_SESSION['userid'] = $row['user_id'];
           $_SESSION['user'] = $row['korg_name'];
-          $_SESSION['logged'] = "logged";
+          $_SESSION['logged'] = true;
           $_SESSION['fails'] = 0; // Virheellisten kirjautumisten määrä
           $_SESSION['filters'] = ""; // Asettaa kansiohallinnan suodatusoletuksen
           $_SESSION['lastupload'] = ""; // Viimeisimmän lisätyn kuvan hakemisto

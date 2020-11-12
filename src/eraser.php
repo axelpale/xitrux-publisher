@@ -4,7 +4,7 @@ include("admin-functions.php");
 include("header1.php");
 include("header2.php");
 
-if ($_SESSION['logged'] == "logged") {
+if ($_SESSION['logged']) {
 
   // Tämä tiedosto poistaa palvelimelta kansion taikka kuvan sekä niihin liittyvät tietokantatiedot
   // GET: fid= [n] & type= fold/pic & [pid= [n] ]
