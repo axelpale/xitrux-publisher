@@ -8,7 +8,7 @@
   printSeparator();
 
   // Listataan kaikki kuvat kansiosta links
-  $sql = "SELECT pic_id,pic_name,pic_src,pic_caption,pic_link ";
+  $sql = "SELECT pic_id,pic_name,pic_src,pic_caption,pic_link,pic_thumb ";
   $sql .= "FROM korg_pics WHERE fold_id=33 AND pic_hidden=0 ORDER BY pic_id DESC";
   $rows = korg_get_rows($sql, $con);
 
@@ -21,7 +21,7 @@
       echo "<a class='thumb' href='".$item['pic_link']."' target='_blank'>";
       echo "<img src='";
 
-      echo validateSrc($item['pic_thumb'],$item['pic_src']);
+      echo validateSrc($item['pic_thumb'], $item['pic_src']);
       echo "' alt='".$item['pic_name']."' />\n</a>\n";
 
       echo "<h2>[<a href='".$item['pic_link']."' target='_blank'>";
