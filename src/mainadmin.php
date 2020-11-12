@@ -1,15 +1,14 @@
 <?php
 	include("header1.php");
-	include_once( "config.php" );
 ?>
 
 <?php
-	// Kirjoitetaan javascript ainoastaan kirjautuneelle 
+	// Kirjoitetaan javascript ainoastaan kirjautuneelle
 	if($LOGGED) {
 ?>
 
 <script type="text/javascript">
-	
+
 	function cancelPrompt() {
 		document.getElementById("toolprompt").innerHTML="";
 	}
@@ -115,7 +114,7 @@ if($LOGGED) {
 	} else echo " Kaikki";
 	if($SHOW == "system") echo " - Systeemikansiot";
 	echo "</h1>\n";
-	
+
 
 	// Muokkaustyökalut
 	echo "<div class='linkrow'>\n";
@@ -269,7 +268,7 @@ if($LOGGED) {
 	}
 
 } else {
-	include("unauthorized.php");		
+	include("unauthorized.php");
 }
 ?>
 

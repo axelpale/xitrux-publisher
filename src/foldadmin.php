@@ -1,11 +1,10 @@
 <?php
 	include("header1.php");
-	include_once( "config.php" );
 	include("admin-functions.php");
 ?>
 
 <script type="text/javascript">
-	
+
 	function cancelPrompt() {
 		document.getElementById("toolprompt").innerHTML="";
 	}
@@ -103,7 +102,7 @@ if($LOGGED) {
 		// Tyhjennetään hidefold-attribuutti, jotta päivitettäessä kansiota ei turhaan piilotettaisi/paljastettaisi uudestaan
 		//setGets("?fid=".$fid);
 	}
-	
+
 	//Linkki takaisin kansiolistaukseen
 	echo "<div class='linkrow top'>\n";
 	echo "[<a href='mainadmin.php?fid=".$fid."'>Takaisin kansioihin</a>]\n";
@@ -295,7 +294,7 @@ if($LOGGED) {
 	}
 
 } else {
-	include("unauthorized.php");		
+	include("unauthorized.php");
 }
 ?>
 

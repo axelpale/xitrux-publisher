@@ -1,5 +1,7 @@
 <?php
 
+include_once("config.php");
+
 ##########################################################
 # Sivuston julkisissa osiossa tarvittavia php-funktioita #
 ##########################################################

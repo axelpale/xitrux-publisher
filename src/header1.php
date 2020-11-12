@@ -1,12 +1,9 @@
 <?php
 	// Käynnistetään sessio kirjautumista varten
 	session_start();
-	
-	// Sivuston vakiot
-	include_once( "config.php" );
 
 	// Sivuston julkisella puolella käytettävät php-funktiot, esim printSeparator()
-	include_once( "public-functions.php" );
+	include_once("public-functions.php");
 
 	// Sivulla käytetty mysql-yhteys (suljetaan footer.phpssä)
 	$con = korg_connect();
@@ -14,7 +11,7 @@
 	// Käyttäjän statuksen tarkastaminen
 	$LOGGED = false;
 	if($_SESSION['logged'] == "logged") $LOGGED = true;
-	
+
 	// Kävijälaskuri
 	if( ENABLE_VISITOR_COUNTER ) {
 		if( !isset($_SESSION['oldvisitor']) ) {
@@ -22,7 +19,7 @@
 			addVisitor(1,$con);
 		}
 	}
-	
+
 	// Page load counter, sivujen latausmäärän laskuri
 	if( ENABLE_PAGELOAD_COUNTER ) {
 		addPageload(1,$con);
@@ -45,7 +42,7 @@
 	echo "<meta name=\"keywords\" content=\"".SITE_META_KEYWORDS."\" />\n";
 ?>
 
-<link rel="shortcut icon" href="<?php echo SITE_ICON_PATH; ?>" type="image/x-icon" /> 
+<link rel="shortcut icon" href="<?php echo SITE_ICON_PATH; ?>" type="image/x-icon" />
 <link rel="icon" href="<?php echo SITE_ICON_PATH; ?>" type="image/x-icon" />
 
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
