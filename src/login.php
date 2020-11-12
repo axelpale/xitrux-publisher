@@ -34,7 +34,7 @@ function validateForm(thisform) {
 <?php
 
 if ($LOGGED) echo "KIRJAUTUNUT\n";
-if ($_SESSION['fails'] < 5) {
+if (!isset($_SESSION['fails']) || $_SESSION['fails'] < 5) {
   echo "<h1>Kirjaudu sisään:</h1>\n";
   printSeparator();
   echo "<form action='login.exe.php' onsubmit='return validateForm(this)' method='post'>\n";
