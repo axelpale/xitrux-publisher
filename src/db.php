@@ -30,7 +30,7 @@ function korg_insert($sql, $con) {
   // Return number of rows affected.
   $result = $con->query($sql);
   if (!$result) {
-    return 0
+    return 0;
   }
   return $result->rowCount();
 }
@@ -43,7 +43,7 @@ function korg_update($sql, $con) {
   // Return number of rows affected.
   $result = $con->query($sql);
   if (!$result) {
-    return 0
+    return 0;
   }
   return $result->rowCount();
 }
@@ -52,7 +52,7 @@ function korg_delete($sql, $con) {
   // Return number of rows affected.
   $result = $con->query($sql);
   if (!$result) {
-    return 0
+    return 0;
   }
   return $result->rowCount();
 }
