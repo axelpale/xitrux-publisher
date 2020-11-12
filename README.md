@@ -2,6 +2,10 @@
 
 Source code for my first content management system written in PHP in 2008. See it in action at [kohteet.org](https://kohteet.org)
 
+## Screenshot
+
+![Admin panel](doc/example.jpg)
+
 ## Install
 
 Requirements: PHP 7 and MySQL.
