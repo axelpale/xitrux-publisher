@@ -10,7 +10,7 @@
 
   // Käyttäjän statuksen tarkastaminen
   $LOGGED = false;
-  if ($_SESSION['logged']) $LOGGED = true;
+  if (isset($_SESSION['logged'])) $LOGGED = true;
 
   if ($LOGGED) {
 

@@ -2,7 +2,7 @@
 <?php include("header2.php"); ?>
 
 <?php
-if ($_SESSION['logged']) {
+if (isset($_SESSION['logged'])) {
 
   //GET: fid= [n] & type= fold/pic & [pid= [n] ]
 
